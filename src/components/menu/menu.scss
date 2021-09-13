@@ -1,0 +1,13 @@
+@import '../../theme/variables.scss';
+
+.menu {
+  &__item {
+    display: inline;
+    color: $dark-shade;
+    margin-left: 1.5rem;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}

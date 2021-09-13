@@ -1,0 +1,19 @@
+//-
+  options.href - адрес ссылки для тега: <a> - оформленного как кнопка (присутствует только у <ссылок>)
+  options.text - текст - содержимое кнопки
+  options.fillingStyle - тип заполнения кнопки (filled/hollow)
+  options.widthStyle- тип ширины (fixed - фиксированная/ fit - зависит от ширины внутреннего текста)
+
+mixin button(options)
+    if !options
+        - options = {}
+
+    -
+        var classes = []
+        if (options.fillingStyle) classes.push('button--' + options.fillingStyle)
+        if (options.widthStyle) classes.push('button--' + options.widthStyle)
+
+    if options.href
+        a.button(class = classes href = options.href)= options.text
+    else
+        button.button(class = classes)= options.text

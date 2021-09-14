@@ -4,7 +4,9 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 
-design
+src/theme/fonts/
+design/
+
 .idea/
 .cache/
 coverage/

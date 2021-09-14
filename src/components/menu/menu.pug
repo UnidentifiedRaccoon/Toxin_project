@@ -1,8 +1,19 @@
 include ../button/button
+include ../link/link
 //-
+  common
   options.items - массив с элементами меню
-  options.items[0].name - имя элемента меню
-  options.items[0].href - ссылка элемента меню
+  options.items[0].text - текст - содержимое кнопки
+  options.items[0].href - адрес ссылки для тега: <a> (в том числе оформленного как кнопка (присутствует только у <ссылок>))
+
+  +button
+  options.items[0].fillingStyle - тип заполнения кнопки (filled/hollow)
+  options.items[0].widthStyle- тип ширины (fixed - фиксированная / fit - зависит от ширины внутреннего текста)
+
+  +link
+  options.items[0].dropdown - флаг true если при наведении ссылку выпадает отдельное меню
+  options.items[0].dropdownContent - содержимое выпадашки - массив ссылок
+
 
 mixin menu(options)
   if !options
@@ -16,10 +27,16 @@ mixin menu(options)
         if item.buttonMode
           .menu__item
             +button({
-              text: item.name,
+              text: item.text,
               href: item.href,
               fillingStyle: item.fillingStyle,
               widthStyle: item.widthStyle
             })
         else
-          a.menu__item(href = item.href)= item.name
+          .menu__item
+            +link({
+              text: item.text,
+              href: item.href,
+              dropdown: item.dropdown,
+              dropdownContent: item.dropdownContent,
+            })

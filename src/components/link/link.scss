@@ -1,0 +1,103 @@
+@import "../../theme/variables";
+$dropdown-width: 15rem;
+.link {
+  display: inline-block;
+  box-sizing: border-box;
+  color: $dark-shade_0-50;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  &:hover {
+    color: $dark-shade_1;
+  }
+
+
+  // Стили для создания выподашки по наведению
+  // Внешняя обертка для ссылок с выпадашкой
+  &__outer-wrapper {
+    display: inline-block;
+    position: relative;
+  }
+
+  // Стили для ссылки с выпадашкой
+  &--dropdown {
+    position: relative;
+    padding-right: 2rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      right: 8%;
+      top: 30%;
+      border-bottom: 2px solid $dark-shade_0-50;
+      border-right: 2px solid $dark-shade_0-50;
+      transform: rotate(45deg);
+    }
+  }
+
+  // Выпадашка
+  &__dropdown-list {
+    border: 1px solid $dark-shade_0-25;
+    position: absolute;
+    top: 80%;
+    width: $dropdown-width;
+
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0;
+
+    flex-direction: column;
+
+    border-radius: 2rem;
+    background-color: white;
+    box-shadow: 20px 20px 35px -10px rgba(34, 60, 80, 0.5);
+    // Чтобы выпадашка не пропала при наведении
+  }
+
+  // Элемент выпадашки
+  &__dropdown-item{
+    width: 100%;
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Стили для ссылок и выпадашек на различном уровне вложенности
+  &--depth-0 {
+    &:hover + .link__dropdown-content--depth-0 {
+      display: flex;
+
+    }
+
+    &+ .link__dropdown-content--depth-0:hover {
+      display: flex;
+    }
+  }
+
+  &--depth-1 {
+    width: 100%;
+    &:hover + .link__dropdown-content--depth-1 {
+      display: flex;
+      top: 0;
+      right: -$dropdown-width;
+    }
+
+    &+ .link__dropdown-content--depth-1:hover {
+      display: flex;
+      top: 0;
+      right: -$dropdown-width;
+    }
+  }
+
+  &--depth-2 {
+    width: 100%;
+    padding: 1rem 2rem;
+    &:hover + .link__dropdown-content--depth-2 {
+      display: flex;
+
+    }
+  }
+}

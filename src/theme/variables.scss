@@ -6,7 +6,11 @@ $md: 991px;
 $lg: 1199px;
 $xl: 1440px;
 
-$dark-shade: #1f2041;
+$dark-shade_1: transparentize(#1f2041, 0);
+$dark-shade_0-75: transparentize(#1f2041, 0.25);
+$dark-shade_0-50: transparentize(#1f2041, 0.5);
+$dark-shade_0-25: transparentize(#1f2041, 0.75);
+$dark-shade_0-05: transparentize(#1f2041, 0.95);
 $purple: #bc9cff;
 $dark-purple: #8ba4f9;
 $green: #6fcf97;

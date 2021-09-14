@@ -1,31 +1,65 @@
 -
   locals.menuItems = [
     {
-      name: 'О нас',
+      text: 'О нас',
       href: '/mock-address/change-me'
     }, {
-      name: 'Услуги',
+      text: 'Услуги',
+      href: '/mock-address/change-me',
+      dropdown: true,
+      dropdownContent: [
+        {
+          text: 'Бронирование',
+          href: '/mock-address/change-me',
+        },
+        {
+          text: 'Кредитование',
+          href: '/mock-address/change-me',
+        }
+      ]
+
+    }, {
+      text: 'Вакансии',
       href: '/mock-address/change-me'
     }, {
-      name: 'Вакансии',
+      text: 'Новости',
       href: '/mock-address/change-me'
     }, {
-      name: 'Новости',
-      href: '/mock-address/change-me'
-    }, {
-      name: 'Соглашения',
-      href: '/mock-address/change-me'
+      text: 'Соглашения',
+      href: '/mock-address/change-me',
+      dropdown: true,
+      dropdownContent: [
+        {
+          text: 'Пользовательское Соглашение',
+          href: '/mock-address/change-me',
+        },
+        {
+          text: 'Согласие на обработку персональных данных',
+          href: '/mock-address/change-me',
+          dropdown: true,
+          dropdownContent: [
+            {
+              text: 'Паспортные данные',
+              href: '/mock-address/change-me',
+            },
+            {
+              text: 'Медицинские данные',
+              href: '/mock-address/change-me',
+            },
+          ]
+        }
+      ]
     }
   ]
   locals.guestMenuItems = [
     {
-      name: 'Войти',
+      text: 'Войти',
       href: '/mock-address/change-me',
       buttonMode: true,
       fillingStyle: "hollow",
       widthStyle: "fit"
     }, {
-      name: 'Зарегистрироваться',
+      text: 'Зарегистрироваться',
       href: '/mock-address/change-me',
       buttonMode: true,
       fillingStyle: "filled",

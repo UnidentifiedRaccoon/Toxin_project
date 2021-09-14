@@ -1,0 +1,14 @@
+mixin link(options, depth)
+    - var currentDepth = depth || 0;
+
+    if options.dropdown
+        - var linkClasses = [`link`, `link--dropdown`, `link--depth-${currentDepth}`]
+        - var contentClasses = [`link__dropdown-list`, `link__dropdown-content--depth-${currentDepth}`]
+        .link__outer-wrapper
+            a(class= linkClasses href = options.href)= options.text
+            ul(class= contentClasses)
+                each item in options.dropdownContent
+                    li.link__dropdown-item
+                        +link(item, currentDepth++)
+    else
+        a.link(href = options.href)= options.text

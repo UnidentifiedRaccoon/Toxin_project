@@ -1,0 +1,18 @@
+include ../input/input
+
+mixin calendar()
+    .calendar-box
+        +input({
+            labelText: 'Прибытие',
+            type: 'text',
+            placeholder: 'ДД.ММ.ГГГГ',
+            mode: 'dropdown',
+            half: true,
+        })(class='js--calendar-field--start')
+        +input({
+            labelText: 'Выезд',
+            type: 'text',
+            placeholder: 'ДД.ММ.ГГГГ',
+            mode: 'dropdown',
+            half: true,
+        })(class='js--calendar-field--end')

@@ -1,0 +1,79 @@
+@import '../../theme/variables.scss';
+
+.calendar {
+  position: relative;
+  font-family: 'Montserrat', 'Arial', sans-serif;
+  width: 88.5%;
+  border: 1px solid $dark-shade_0-25;
+
+  &-box {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  // Стили для месяца и года (верхняя строка)
+  & .datepicker--nav-title {
+    color: $dark-shade_1;
+    font-size: 1.3rem;
+    font-weight: bold;
+
+    & > i {
+      color: inherit;
+    }
+  }
+
+  // Стили для кнопок prev & next
+  & svg {
+    width: 20px;
+    height: 20px;
+
+    & path {
+      fill: $purple;
+      stroke-width: 0;
+    }
+  }
+
+  // Стили для названия дней недели
+  & .datepicker--day-name {
+    font-size: 0.8rem;
+    color: $purple;
+    text-transform: none;
+  }
+
+  & .datepicker--cell {
+    font-size: 0.8rem;
+    color: $dark-shade_0-50;
+
+    &.-disabled- {
+      color: $dark-shade_0-25;
+    }
+
+    &.-selected- {
+      color: white;
+      background: $gradient;
+      border-radius: 50%;
+    }
+
+    &.-in-range- {
+      background: $gradient-transparency;
+    }
+  }
+
+  & .datepicker--buttons {
+    justify-content: space-between;
+  }
+
+  & .datepicker--button {
+    width: 45%;
+
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    color: $purple;
+    background: transparent;
+    border: none;
+
+  }
+
+}

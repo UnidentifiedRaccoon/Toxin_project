@@ -1,5 +1,6 @@
 include ../input/input
 include ../dropdown/dropdown
+include ../calendar/calendar
 
 
 
@@ -21,20 +22,7 @@ mixin modal(options)
                 name="find"
                 )
                 .modal__calendar-box
-                    +input({
-                        labelText: 'Прибытие',
-                        type: 'text',
-                        placeholder: 'ДД.ММ.ГГГГ',
-                        mode: 'dropdown',
-                        half: true,
-                    })
-                    +input({
-                        labelText: 'Выезд',
-                        type: 'text',
-                        placeholder: 'ДД.ММ.ГГГГ',
-                        mode: 'dropdown',
-                        half: true,
-                    })
+                    +calendar()
                 .modal__dropdown
                     +dropdown({
                         mode: 'persons',

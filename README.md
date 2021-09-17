@@ -35,3 +35,9 @@ To start dev-server:
 ```sh
 npm run serve
 ```
+
+## Issues
+
+If you find some bugs write:
+- on [issues](https://github.com/UnidentifiedRaccoon/Toxin_project/issues)
+- to [email: yura.posledov@yandex.ru](mailto:yura.posledov@yandex.ru)

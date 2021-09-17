@@ -5,6 +5,7 @@ const path = require('path');
 const fs = require('fs');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 // Собирает все css прикрепленные к js файлу и создает для низ отдельный файл
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -152,14 +153,19 @@ module.exports = {
       new webpack.HotModuleReplacementPlugin(),
       new webpack.ProgressPlugin(),
       new CleanWebpackPlugin(),
-      // ToDo - копирование неизменяемых файлов
-      // new CopyWebpackPlugin({
-      //   patterns: [{
-      //     from: path.resolve(__dirname, '../src/favicon.ico'),
-      //     to: path.resolve(__dirname, '../dist')
-      //   }]
-      // }),
+      // ToDo найти человека который объяснит как "это" правильно сделать (подключить datepicker/jquery)
+      new CopyWebpackPlugin({
+        patterns: [{
+          from: path.resolve(__dirname, '../src/pages/index/datepicker'),
+          to: path.resolve(__dirname, '../dist/datepicker')
+        },
+          {
+            from: path.resolve(__dirname, '../src/pages/index/jquery'),
+            to: path.resolve(__dirname, '../dist/jquery')
+          }]
+      }),
       new MiniCssExtractPlugin({
         filename: filename('css'),
       })].concat(htmlPlugins)
+
 };

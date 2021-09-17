@@ -19,6 +19,7 @@ $green: #6fcf97;
 
 $border-width: 2px;
 $gradient: linear-gradient($purple, $dark-purple);
+$gradient-transparency: linear-gradient(rgba(188, 156, 255, 0.25), rgba(139, 164, 249, 0.25));
 $modal-width: 380px;
 
 @mixin arrow {

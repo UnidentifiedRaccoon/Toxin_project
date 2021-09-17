@@ -1,8 +1,9 @@
-include ../menu/menu
+include ../main-navigation/main-navigation
 include ../logo/logo
 
 //-
-  options.menuItems - массив елементов меню
+  options.menuItems - массив элементов меню
+  options.guestMenuItems - массив элементов меню гоостя
 
 mixin header(options)
   if !options
@@ -12,6 +13,6 @@ mixin header(options)
     .header__logo
       +logo()
     .header__menu
-      +menu({items: options.menuItems})
+      +main-navigation({items: options.menuItems})
     .header__guestMenu
-      +menu({items: options.guestMenuItems})
+      +main-navigation({items: options.guestMenuItems})

@@ -1,0 +1,73 @@
+@import '../../theme/variables.scss';
+
+.dropdown {
+  position: relative;
+
+  &__content-box {
+    display: none;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+
+    box-sizing: border-box;
+    padding: 1rem 1rem 0.5rem 1rem;
+    background-color: white;
+    border: 1px solid $dark-shade_0-25;
+    border-radius: 2px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.7);
+
+    &:hover {
+      display: block;
+    }
+
+    &.js--dropdown__content-box {
+      display: block
+    }
+  }
+
+  &__list {
+    margin: 0;
+    margin-bottom: 1rem;
+    padding: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+
+    &-text {
+      max-width: 65%;
+    }
+
+    &-count {
+      margin: 0.5rem 1rem;
+    }
+
+    &-button {
+      width: 30px;
+      height: 30px;
+      background-color: white;
+      color: $dark-shade_0-50;
+      border: 1px solid $dark-shade_0-25;
+      border-radius: 50%;
+
+      &:disabled {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  &__bottom-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+}

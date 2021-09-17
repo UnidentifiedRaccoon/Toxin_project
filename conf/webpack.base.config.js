@@ -5,7 +5,7 @@ const path = require('path');
 const fs = require('fs');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// ToDo const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 // Собирает все css прикрепленные к js файлу и создает для низ отдельный файл
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
@@ -26,10 +26,9 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const pages = [];
 fs
     .readdirSync(path.resolve(__dirname, '../src/pages'))
-    // ToDo так как мы используем шаблонизатор должна быть база в виде страницы с header и footer, которая явл. шаблоном, поэтому не нуждается в создании отдельной страницы
-    // .filter((file) => {
-    //   return file.indexOf('base') !== 0;
-    // })
+    .filter((file) => {
+      return file.indexOf('base') !== 0;
+    })
     .forEach((file) => {
       pages.push(file.split('/', 2));
     });

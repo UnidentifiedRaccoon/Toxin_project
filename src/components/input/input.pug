@@ -1,0 +1,21 @@
+//-
+    options.id = задание id для input
+    options.type = задание type для input
+    options.placeholder = задание placeholder для input
+    options.mode - "subscribe"/"dropdown" - если включен, то добавляет полю особую стилизацию
+    options.half - true - input должен занимать половину родителя
+    options.labelText - задает текст для <label>
+
+mixin input(options)
+    -
+        var classes = []
+        classes.push((options.mode) ? `input--${options.mode}` : "")
+        classes.push((options.half) ? `input--half` : "")
+    .input(class=classes)
+        label.input__label(for=options.id)= options.labelText
+        .input__field-wrapper
+            input.input__field(
+                id=options.id
+                type=options.type
+                placeholder=options.placeholder
+                )&attributes(attributes)

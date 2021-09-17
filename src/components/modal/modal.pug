@@ -1,0 +1,56 @@
+include ../input/input
+include ../dropdown/dropdown
+
+
+
+mixin modal(options)
+    // options.type - find-apartments"/"room-booking"/"registration"/"sing-in"
+        - позволяет выбрать какое модальное окно необходимо добавить -
+
+
+    if options.type === "find-apartments"
+        .modal
+            b.modal__heading Найдем номера под ваши пожелания
+            form(
+                class="modal__form"
+                id="find-form"
+                action='/mock-address/change-me'
+                autocomplete="off"
+                method="get"
+                target="_self"
+                name="find"
+                )
+                .modal__calendar-box
+                    +input({
+                        labelText: 'Прибытие',
+                        type: 'text',
+                        placeholder: 'ДД.ММ.ГГГГ',
+                        mode: 'dropdown',
+                        half: true,
+                    })
+                    +input({
+                        labelText: 'Выезд',
+                        type: 'text',
+                        placeholder: 'ДД.ММ.ГГГГ',
+                        mode: 'dropdown',
+                        half: true,
+                    })
+                .modal__dropdown
+                    +dropdown({
+                        mode: 'persons',
+                    })
+                .modal__button
+                     +button({
+                        text: 'Подобрать номер',
+                        fillingStyle: 'filled',
+                        widthStyle: 'full',
+                         withArrow: true
+                    })
+
+
+    else if options.type === "room-booking"
+
+    else if options.type === "registration"
+
+    else if options.type === "sing-in"
+

@@ -1,0 +1,24 @@
+//-
+    options.items[0] - объект с данными ссылки
+    options.items[0].text - текст ссылки
+    options.items[0].href - адрес ссылки
+mixin social(options)
+    .social
+        ul.social__list
+            each item in options.items
+                li.social__item
+                    a.social__link(
+                        href= item.href
+                        target = '_blank'
+                        rel = "noopener noreferrer"
+                        aria-label=`Ссылка на ${item.text}`
+                    )= item.text
+                        // inline svg позволяет избавиться от лишних подключений и
+                            при этом изменять картинку с помощью CSS стилей
+                            При инлайне SVG в CSS подобного эффекта не добиться(только css - фильтры)
+                        if item.text==='facebook'
+                            include ./img/icon-fb.svg
+                        else if item.text==='twitter'
+                            include ./img/icon-twitter.svg
+                        else if item.text === 'instagram'
+                            include ./img/icon-insta.svg

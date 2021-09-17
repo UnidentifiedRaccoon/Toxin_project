@@ -1,17 +1,55 @@
+include ../social/social
+include ../input/input
 //-
-  options.items - массив с элементами меню
-  options.items[0].name - имя элемента меню
-  options.items[0].href - ссылка элемента меню
+    options.items - массив с элементами меню
+    options.items[0].text - имя элемента меню
+    options.items[0].href - ссылка элемента меню
+    options.social -
+
 
 mixin footer(options)
-  if !options
-    - options = {}
-  if !options.items
-    - options.items = []
+    if !options
+        - options = {}
+    if !options.items
+        - options.items = []
 
-  .footer
-     nav.footer__nav
-       for item in options.items
-         a.footer__nav-item(href = item.href)= item.name
-     .footer__copyright
-       | &copy; 2016-2017
+    .footer
+        .footer__row.footer__row--top
+            .footer__column.footer__column--logo
+                +logo()
+                p.footer__column-text.
+                    Бронирование номеров в лучшем отеле 2019 года
+                    по версии ассоциации «Отельные взгляды»
+            //  Меню в блоке footer зачастую не является навигацией (<nav>)
+                Использование отдельного mixin не целесообразно (но возможно)
+                В данном случае подобное решение объясняется простотой реализации и стилизации
+            each column in options.items
+                .footer__column.footer__column--links
+                    strong.footer__column-title= column.title
+                    ul.footer__links-list
+                        each item in column.items
+                            li.footer__link-item
+                                +link({
+                                    text: item.text,
+                                    href: item.href,
+                                })
+
+            .footer__column.footer__column--subscribe
+                strong.footer__column-title Подписка
+                p.footer__column-text.
+                    Получайте специальные предложения и
+                    новости сервиса
+                +input({
+                    type: 'email',
+                    placeholder: 'Email',
+                    mode: 'subscribe',
+                })
+
+        .footer__row.footer__row--bottom
+            .footer__copyright
+                - var data = new Date();
+                - var currentYear = data.getFullYear();
+                | Copyright © #{currentYear} Toxin отель. Все права защищены.
+
+            .footer__social
+                +social({items: options.social})

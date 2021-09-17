@@ -15,28 +15,28 @@ include ../link/link
   options.items[0].dropdownContent - содержимое выпадашки - массив ссылок
 
 
-mixin menu(options)
+mixin main-navigation(options)
   if !options
     - options = {}
   if !options.items
     - options.items = []
 
-  .menu
-    nav.menu__list
-      for item in options.items
-        if item.buttonMode
-          .menu__item
-            +button({
-              text: item.text,
-              href: item.href,
-              fillingStyle: item.fillingStyle,
-              widthStyle: item.widthStyle
-            })
-        else
-          .menu__item
-            +link({
-              text: item.text,
-              href: item.href,
-              dropdown: item.dropdown,
-              dropdownContent: item.dropdownContent,
-            })
+  nav.main-navigation
+    for item in options.items
+      if item.buttonMode
+        .main-navigation__item
+          +button({
+            text: item.text,
+            href: item.href,
+            fillingStyle: item.fillingStyle,
+            widthStyle: item.widthStyle
+          })
+      else
+        .main-navigation__item
+          +link({
+            text: item.text,
+            href: item.href,
+            isActive: item.isActive,
+            dropdown: item.dropdown,
+            dropdownContent: item.dropdownContent
+          })

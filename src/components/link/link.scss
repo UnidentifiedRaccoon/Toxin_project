@@ -9,6 +9,11 @@ $dropdown-width: 15rem;
     color: $dark-shade_1;
   }
 
+  &--active {
+    color: $dark-shade_1;
+    font-weight: bold;
+  }
+
 
   // Стили для создания выподашки по наведению
   // Внешняя обертка для ссылок с выпадашкой
@@ -23,15 +28,9 @@ $dropdown-width: 15rem;
     padding-right: 2rem;
 
     &::after {
-      content: "";
-      position: absolute;
-      width: 7px;
-      height: 7px;
-      right: 8%;
-      top: 30%;
-      border-bottom: 2px solid $dark-shade_0-50;
-      border-right: 2px solid $dark-shade_0-50;
-      transform: rotate(45deg);
+      @include css-arrow;
+      right: 8px;
+      top: 25%;
     }
   }
 
@@ -52,10 +51,9 @@ $dropdown-width: 15rem;
     border-radius: 2rem;
     background-color: white;
     box-shadow: 20px 20px 35px -10px rgba(34, 60, 80, 0.5);
-    // Чтобы выпадашка не пропала при наведении
   }
 
-  // Элемент выпадашки
+  // Элемент списка внутри выпадашки
   &__dropdown-item{
     width: 100%;
     margin-bottom: 1rem;

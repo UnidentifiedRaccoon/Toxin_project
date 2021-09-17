@@ -1,26 +1,66 @@
+@import '../../theme/variables.scss';
+
 .footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem;
-  color: white;
-  font-family: sans-serif;
-  font-size: 1.2rem;
-  justify-content: space-between;
-  align-items: center;
-
-  &__nav {
     display: flex;
-    flex: 1;
+    flex-direction: column;
     flex-wrap: wrap;
-  }
+    padding: 0 10rem;
 
-  &__nav-item {
-    margin-right: 1.5rem;
-    white-space: nowrap;
-    color: white;
-  }
 
-  &__copyright {
-    white-space: nowrap;
-  }
+    &__row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-top: 2px solid $dark-shade_0-05;
+
+        &--top {
+            padding: 7rem 0;
+        }
+        &--bottom {
+            padding: 1.5rem 0;
+        }
+    }
+
+    &__column {
+        width: 13%;
+        &--logo,
+        &--subscribe {
+            width: 22.5%
+        }
+
+        &-title {
+            font-size: 0.85rem;
+            display: block;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        &-text {
+            color: $dark-shade_0-75;
+            line-height: 1.5rem;
+        }
+    }
+
+    &__links-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__link-item{
+        margin-bottom: 0.5rem;
+
+        & a {
+            padding-left: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__copyright {
+        color: $dark-shade_0-75;
+    }
+
 }

@@ -2,25 +2,41 @@
 .button {
   display: inline;
   position: relative;
-  padding: 9px 20px 11px;
-
-  font-size: 12px;
-
+  border: none;
   border-radius: 22px;
+  padding: 5px 0;
+  cursor: pointer;
 
+  color: $purple;
+  font-size: 12px;
+  font-weight: bold;
   text-transform: uppercase;
+  background: transparent;
+
+  &--with-arrow {
+    position: relative;
+
+    // Добавление иконки стрелки
+    &::before {
+      @include arrow;
+      background: url('./img/icon-arrow_forward.svg') 50% 50% no-repeat
+
+    }
+  }
 
 
+  &--full {
+    text-align: center;
+    width: 100%;
+  }
 
   &--filled {
+    padding: 9px 20px 11px;
     color: white;
     background: $gradient;
   }
 
   &--hollow {
-
-    color: $purple;
-
     // Стили + псевдоэлемент позволяют создать градиентный border
     padding: 7px 20px 9px;
     background: white;
@@ -40,4 +56,5 @@
       background: $gradient;
     }
   }
+
 }

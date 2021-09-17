@@ -18,7 +18,7 @@ html
                 +layout__container({align: 'center'})
                     block header
                         +header({
-                            menuItems: locals.menuItems,
+                            menuItems: locals.headerMenuItems,
                             guestMenuItems: locals.guestMenuItems
                         })
             +layout__main()
@@ -27,5 +27,8 @@ html
             +layout__footer()
                 +layout__container({align: 'center'})
                     block footer
-                        +footer({items: locals.menuItems})
+                        +footer({
+                            items: locals.footerMenuItems,
+                            social: locals.social
+                        })
         block scripts

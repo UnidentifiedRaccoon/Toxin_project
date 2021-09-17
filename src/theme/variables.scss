@@ -14,8 +14,33 @@ $dark-shade_0-05: transparentize(#1f2041, 0.95);
 $purple: #bc9cff;
 $dark-purple: #8ba4f9;
 $green: #6fcf97;
+
+
+
 $border-width: 2px;
 $gradient: linear-gradient($purple, $dark-purple);
+$modal-width: 380px;
+
+@mixin arrow {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  right: -3px;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+@mixin css-arrow {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  right: 15px;
+  top: 35%;
+  border-bottom: 2px solid $dark-shade_0-50;
+  border-right: 2px solid $dark-shade_0-50;
+  transform: rotate(45deg);
+}
 
 
 /***** Mixins *****/
@@ -36,14 +61,3 @@ $gradient: linear-gradient($purple, $dark-purple);
     @content;
   }
 }
-
-//@mixin column($screen-width, $count) {
-//  flex-shrink: 0;
-//  padding-right: 1rem;
-//  padding-bottom: 1rem;
-//  padding-left: 1rem;
-//
-//  @include media-breakpoint-up($screen-width) {
-//    flex-basis: (100% / 12 * $count);
-//  }
-//}

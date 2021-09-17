@@ -1,6 +1,15 @@
 extends ../base/base
+include ../../components/modal/modal
 
 block title
     | Starter kit
 
 block main
+    .main.main--bg-1
+        .slide
+        .slide
+        .slide
+        +modal({type: 'find-apartments'})
+        p.main__text-lead.
+            Лучшие номера для вашей работы, отдыха
+            и просто вдохновения

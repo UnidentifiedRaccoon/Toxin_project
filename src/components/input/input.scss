@@ -1,0 +1,49 @@
+@import '../../theme/variables.scss';
+
+.input {
+  display: inline-block;
+  width: 100%;
+
+  &--half{
+    width: 45%;
+  }
+
+  &__label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &__field {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.75rem 3rem 1rem 1rem;
+    color: $dark-shade_1;
+    border: 1px solid $dark-shade_0-25;
+    border-radius: 2px;
+  }
+
+  // Особая стилизация для поля email из блока footer
+  &--subscribe .input__field-wrapper {
+    position: relative;
+
+    // Добавление иконки стрелки
+    &::after {
+      @include arrow;
+      background: url("./img/icon-arrow.svg") 50% 50% no-repeat;
+    }
+  }
+
+  &--dropdown .input__field-wrapper {
+    position: relative;
+
+    // Добавление иконки стрелки
+    &::after {
+      @include css-arrow;
+    }
+  }
+
+
+}

@@ -1,8 +1,10 @@
 //-
-  options.href - адрес ссылки для тега: <a> - оформленного как кнопка (присутствует только у <ссылок>)
-  options.text - текст - содержимое кнопки
-  options.fillingStyle - тип заполнения кнопки (filled/hollow)
-  options.widthStyle- тип ширины (fixed - фиксированная/ fit - зависит от ширины внутреннего текста)
+    options.href - адрес ссылки для тега: <a> - оформленного как кнопка (присутствует только у <ссылок>)
+    options.text - текст - содержимое кнопки
+    options.fillingStyle - тип заполнения кнопки (filled/hollow)
+    options.widthStyle- тип ширины (full - зависит от ширины родителя/ fit - зависит от ширины внутреннего текста)
+    options.type - submit/button
+    options.withArrow - true/false - добавляет псевдоэлемент с иконкой стрелки
 
 mixin button(options)
     if !options
@@ -12,8 +14,9 @@ mixin button(options)
         var classes = []
         if (options.fillingStyle) classes.push('button--' + options.fillingStyle)
         if (options.widthStyle) classes.push('button--' + options.widthStyle)
+        if (options.withArrow) classes.push('button--with-arrow')
 
     if options.href
-        a.button(class = classes href = options.href)= options.text
+        a.button(class=classes href=options.href)= options.text
     else
-        button.button(class = classes)= options.text
+        button.button(class=classes type=options.type)&attributes(attributes)= options.text

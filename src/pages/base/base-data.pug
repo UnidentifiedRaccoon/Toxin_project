@@ -1,19 +1,25 @@
 -
-  locals.menuItems = [
+  // Меню шапки
+  locals.headerMenuItems = [
     {
       text: 'О нас',
-      href: '/mock-address/change-me'
+      href: '/mock-address/change-me',
+      isActive: true
     }, {
       text: 'Услуги',
       href: '/mock-address/change-me',
       dropdown: true,
       dropdownContent: [
         {
-          text: 'Бронирование',
+          text: 'Хамам',
           href: '/mock-address/change-me',
         },
         {
-          text: 'Кредитование',
+          text: 'Игровой зал',
+          href: '/mock-address/change-me',
+        },
+        {
+          text: 'Библиотека',
           href: '/mock-address/change-me',
         }
       ]
@@ -51,6 +57,8 @@
       ]
     }
   ]
+
+  // Пользователь
   locals.guestMenuItems = [
     {
       text: 'Войти',
@@ -65,4 +73,73 @@
       fillingStyle: "filled",
       widthStyle: "fit"
     }
+  ]
+
+  // Меню подвала
+  locals.footerMenuItems = [
+    {
+      title: 'Навигация',
+      items: [
+        {
+          text: 'О нас',
+          href: '/mock-address/change-me',
+        },  {
+          text: 'Новости',
+          href: '/mock-address/change-me',
+        },  {
+          text: 'Служба поддержки',
+          href: '/mock-address/change-me',
+        },  {
+          text: 'Услуги',
+          href: '/mock-address/change-me',
+        },
+      ]
+    },
+    {
+      title: 'О нас',
+      items: [
+        {
+          text: 'О сервисе',
+          href: '/mock-address/change-me',
+        }, {
+          text: 'Наша команда',
+          href: '/mock-address/change-me',
+        }, {
+          text: 'Вакансии',
+          href: '/mock-address/change-me',
+        }, {
+          text: 'Инвесторы',
+          href: '/mock-address/change-me',
+        },
+      ]
+    },
+    {
+      title: 'Cлужба поддержки',
+      items: [
+        {
+          text: 'Соглашения',
+          href: '/mock-address/change-me',
+        }, {
+          text: 'Сообщества',
+          href: '/mock-address/change-me',
+        }, {
+          text: 'Связь с нами',
+          href: '/mock-address/change-me',
+        }
+      ]
+    },
+  ]
+
+  // Ссылки на соцсети
+  locals.social = [
+      {
+        text: 'twitter',
+        href: '/mock-address/change-me',
+      },  {
+        text: 'facebook',
+        href: '/mock-address/change-me',
+      },  {
+        text: 'instagram',
+        href: '/mock-address/change-me',
+      },
   ]

@@ -1,0 +1,59 @@
+//-
+    options.number - номер комнаты
+    options.cost - стоимость посуточного съема
+    options.rating - рейтинг номера т.е. "оценка"
+    options.reviews - количество отзывов
+    options.isLuxury - true - флаг премиальности номера
+    options.href - ссылка на страницу товара
+    options.slides - [] - массив ссылок на фото номера
+    options.slides[0] - ссылка на одну из фотографий номера
+
+
+
+mixin room-card(options)
+    - var imageCount = 0;
+    article.room-card
+        a.room-card__link(href=options.href)
+            .room-card__slider
+                .room-card__image-wrapper
+                    - var isFirst = true;
+                    each item in options.slides
+                        if isFirst
+                            img.room-card__slide(src=item)
+                            - isFirst = false
+                        else
+                            img.room-card__slide.room-card__slide--hidden(src=item)
+
+                        - imageCount++
+                .room-card__slider-buttons
+                    button.room-card__button.room-card__button--prev
+                    button.room-card__button.room-card__button--next
+                ul.room-card__slider-points
+                    - var i = 0
+                    while (i < imageCount)
+                        li.room-card__slider-point
+                        - i++
+
+            .room-card__info-wrapper
+                h3.room-card__title
+                    span №
+                    span=options.number
+                if (options.isLuxury)
+                    span.room-card__luxury-flag люкс
+                span.room-card__price-text
+
+                    span.room-card__price= options.cost + '₽'
+                    span в сутки
+
+                .room-card__testimonial-wrapper
+                    ul.room-card__stars
+                        - var i = 1
+                        while (i <= parseInt(options.rating))
+                            li.room-card__star.room-card__star--filled
+                            - i++
+                        while (i <= 5)
+                            li.room-card__star.room-card__star--hollow
+                            - i++
+                    span.room-card__testimonial-text
+                        span.room-card__testimonial-count= options.reviews
+                        span Отзывов

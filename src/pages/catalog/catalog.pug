@@ -1,0 +1,30 @@
+extends ../base/base
+
+block variables
+    include ./catalog-data.pug
+    include ../../components/room-card/room-card
+
+
+block links
+    link(href="./plugins/datepicker/css/datepicker.css" rel="stylesheet")
+
+block title
+    | Starter kit
+
+block main
+    .catalog
+        .catalog__wrapper-left
+            .catalog__filter
+                //+filter()
+        .catalog__wrapper-right
+            .catalog__lead  Номера, которые мы для вас подобрали
+            .catalog__cards-box
+                ul.catalog__list
+                    each item in locals.roomCardsInfo
+                        li.catalog__item
+                            +room-card(item)
+            .catalog__pagination
+                //+pagination()
+
+block scripts
+

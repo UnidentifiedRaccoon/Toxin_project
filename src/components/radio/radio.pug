@@ -1,0 +1,28 @@
+
+//-
+    options.items - [{}, {}] - массив объектов радио-кнопок
+    options.name - название группы радио-кнопок
+    options.items[0].value - значение аттрибута value для input
+    options.items[0].text - содержимое подписи к input
+    options.items[0].disabled - true - устанавливает атрибут disabled
+    указанной радио-кнопке
+    options.items[0].checked - true - устанавливает атрибут checked
+        указанной радио-кнопке
+
+mixin radio(options)
+    .radio
+        ul.radio__list
+            each item in options.items
+                li.radio__item
+                    label.radio__label
+                        input.radio__input.visually-hidden(
+                            type="radio"
+                            name=options.name
+                            value=item.value
+                            disabled=item.disabled
+                            checked=item.checked
+                            )
+                        .radio__box
+                            .radio__hole
+                            .radio__gradient
+                        span.radio__text= item.text

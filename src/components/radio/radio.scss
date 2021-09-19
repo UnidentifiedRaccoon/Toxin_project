@@ -1,0 +1,39 @@
+@import '../../theme/variables.scss';
+
+.radio {
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__label {
+    @include radio-label();
+  }
+
+  // Градиентная радио-кнопка
+  &__box {
+    @include radio-box();
+
+
+    & .radio__hole {
+      @include radio-hole();
+    }
+
+    & .radio__gradient {
+      @include gradient-element();
+    }
+  }
+
+  // checked
+  &__input:checked + .radio__box .radio__hole::after {
+    @include radio-after();
+  }
+
+  // disabled
+  &__input:disabled + .radio__box {
+    opacity: 0.5;
+  }
+
+}

@@ -1,0 +1,22 @@
+//-
+    options.value - значение аттрибута value для input
+    options.text - содержимое подписи к input
+    options.disabled - true - устанавливает атрибут disabled
+    указанной радио-кнопке
+    options.checked - true - устанавливает атрибут checked
+        указанной радио-кнопке
+
+
+mixin toggler(options)
+    .toggler
+        label.toggler__label
+            input.toggler__input.visually-hidden(
+                type="checkbox"
+                value=options.value
+                disabled=options.disabled
+                checked=options.checked
+            )
+            div.toggler__box
+                div.toggler__hole
+                div.toggler__gradient
+            span.toggler__text= options.text

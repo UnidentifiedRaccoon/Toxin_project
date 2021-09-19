@@ -1,0 +1,48 @@
+@import '../../theme/variables.scss';
+
+.toggler {
+
+  &__label {
+    @include radio-label();
+
+    width: 100%;
+
+  }
+
+  // Градиентная радио-кнопка
+  &__box {
+    @include radio-box();
+    width: 36px;
+    border-radius: 10px;
+    opacity: 0.5;
+
+    & .toggler__hole {
+      @include radio-hole();
+
+
+      &::after {
+        @include radio-after();
+      }
+    }
+
+    & .toggler__gradient {
+      @include gradient-element();
+
+    }
+  }
+
+  // checked
+  &__input:checked + .toggler__box {
+    opacity: 1;
+
+    & .toggler__hole::after {
+      transform: translateX(18px);
+    }
+  }
+
+  // disabled
+  &__input:disabled + .toggler__box {
+    opacity: 0.5;
+  }
+
+}

@@ -1,18 +1,18 @@
 include ../input/input
 
-mixin calendar()
+//-
+    options.items - [{}, {}] - массив объектов с данными полей
+    options.items[0].labelText - подпись к полю
+    options.items[0].type - "start"/"end"
+
+mixin calendar(options)
     .calendar-box
-        +input({
-            labelText: 'Прибытие',
-            type: 'text',
-            placeholder: 'ДД.ММ.ГГГГ',
-            mode: 'dropdown',
-            half: true,
-        })(class='js--calendar-field--start')
-        +input({
-            labelText: 'Выезд',
-            type: 'text',
-            placeholder: 'ДД.ММ.ГГГГ',
-            mode: 'dropdown',
-            half: true,
-        })(class='js--calendar-field--end')
+        - var half = (options.items.length === 2);
+        each item in options.items
+            +input({
+                labelText: item.labelText,
+                type: 'text',
+                placeholder: 'ДД.ММ.ГГГГ',
+                mode: 'dropdown',
+                half: half,
+            })(class=`js--calendar-field--${item.type}`)

@@ -156,12 +156,12 @@ module.exports = {
       // ToDo найти человека который объяснит как "это" правильно сделать (подключить datepicker/jquery)
       new CopyWebpackPlugin({
         patterns: [{
-          from: path.resolve(__dirname, '../src/pages/index/datepicker'),
-          to: path.resolve(__dirname, '../dist/datepicker')
+          from: path.resolve(__dirname, '../src/plugins/datepicker'),
+          to: path.resolve(__dirname, '../dist/plugins/datepicker')
         },
           {
-            from: path.resolve(__dirname, '../src/pages/index/jquery'),
-            to: path.resolve(__dirname, '../dist/jquery')
+            from: path.resolve(__dirname, '../src/plugins/jquery'),
+            to: path.resolve(__dirname, '../dist/plugins/jquery')
           }]
       }),
       new MiniCssExtractPlugin({

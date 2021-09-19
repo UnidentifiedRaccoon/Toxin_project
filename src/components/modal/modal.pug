@@ -1,11 +1,15 @@
 include ../input/input
+include ../button/button
+include ../radio/radio
+include ../toggler/toggler
+
 include ../dropdown/dropdown
 include ../calendar/calendar
 
 
 
 mixin modal(options)
-    // options.type - find-apartments"/"room-booking"/"registration"/"sing-in"
+    //- options.type - find-apartments"/"room-booking"/"sing-up"/"sing-in"
         - позволяет выбрать какое модальное окно необходимо добавить -
 
 
@@ -22,7 +26,11 @@ mixin modal(options)
                 name="find"
                 )
                 .modal__calendar-box
-                    +calendar()
+                    +calendar({
+                        items: [
+                            {labelText: "Прибытие", type: "start"},
+                            {labelText: "Выезд", type: "end"}]
+                    })
                 .modal__dropdown
                     +dropdown({
                         mode: 'persons',
@@ -38,7 +46,115 @@ mixin modal(options)
 
     else if options.type === "room-booking"
 
-    else if options.type === "registration"
+    else if options.type === "sing-up"
+        .modal
+            b.modal__heading Регистрация аккаунта
+            form(
+                class="modal__form"
+                id="sing-up-form"
+                action='/mock-address/change-me'
+                autocomplete="off"
+                method="post"
+                target="_self"
+                name="sing-up"
+            )
+                .modal__input
+                    +input({
+                        type: "text",
+                        placeholder: "Имя",
+                    })
+                .modal__input
+                    +input({
+                        type: "text",
+                        placeholder: "Фамилия",
+                    })
+                .modal__radio
+                    +radio({
+                        name: "gender",
+                        items: [{
+                            text: 'Мужчина',
+                            value: 'man'
+                        }, {
+                            text: 'Женщина',
+                            value: 'woman'
+                        }]}
+                        )
+                +calendar({
+                    items: [{labelText: "Дата рождения", type: "start"}]
+                })
+                .modal__entry-data-box
+                    p.modal__entry-data-title.
+                        Данные для входа в сервис
+                    .modal__input
+                        +input({
+                            type: "email",
+                            placeholder: "Email",
+                        })
+                    .modal__input
+                        +input({
+                            type: "password",
+                            placeholder: "Пароль",
+                        })
+                    .modal__toggler
+                        +toggler({
+                            text: "Получать спецпредложения",
+                            value: "Get-subscribe"
+                        })
+                .modal__button
+                    +button({
+                        text: 'Войти',
+                        fillingStyle: 'filled',
+                        widthStyle: 'full',
+                        withArrow: true
+                    })
+                .modal__bottom-link-wrapper
+                    p.modal__text Нет аккаунта на Toxin?
+                    +button({
+                        href: './sign-up.html',
+                        text: 'Создать',
+                        fillingStyle: 'hollow',
+                        widthStyle: 'fit'
+                    })
+
+
 
     else if options.type === "sing-in"
+        .modal
+            b.modal__heading Войти
+            form(
+                class="modal__form"
+                id="sing-in-form"
+                action='/mock-address/change-me'
+                autocomplete="off"
+                method="post"
+                target="_self"
+                name="sing-in"
+            )
+                .modal__input
+                    +input({
+                        type: "email",
+                        placeholder: "Email",
+                    })
+                .modal__input
+                    +input({
+                        type: "password",
+                        placeholder: "Пароль",
+                    })
+                .modal__button
+                    +button({
+                        text: 'Войти',
+                        fillingStyle: 'filled',
+                        widthStyle: 'full',
+                        withArrow: true
+                    })
+                .modal__bottom-link-wrapper
+                    p.modal__text Нет аккаунта на Toxin?
+                    +button({
+                        href: './sign-up.html',
+                        text: 'Создать',
+                        fillingStyle: 'hollow',
+                        widthStyle: 'fit',
+                        withArrow: true
+                    })
+
 

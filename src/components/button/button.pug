@@ -17,6 +17,17 @@ mixin button(options)
         if (options.withArrow) classes.push('button--with-arrow')
 
     if options.href
-        a.button(class=classes href=options.href)= options.text
+        if options.fillingStyle === "hollow"
+            .button__box
+                .button__gradient
+                a.button(class=classes href=options.href)= options.text
+        else
+            a.button(class=classes href=options.href)= options.text
+
     else
-        button.button(class=classes type=options.type)&attributes(attributes)= options.text
+        if options.fillingStyle === "hollow"
+            .button__box
+                .button__gradient
+                button.button(class=classes type=options.type)&attributes(attributes)= options.text
+        else
+            button.button(class=classes type=options.type)&attributes(attributes)= options.text

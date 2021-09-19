@@ -1,0 +1,41 @@
+.sign-in {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 165px 100px;
+  width: 100%;
+
+  & .slider {
+    &__slide-3 {
+      animation-name: slide2;
+      animation-duration: 20s;
+      animation-delay: 0s;
+      background-position: 0 50%;
+    }
+
+    &__slide-4 {
+      animation-name: slide2;
+      animation-duration: 20s;
+      animation-delay: 10s;
+      background-position: 0 bottom;
+    }
+  }
+
+  & .modal {
+    &__input {
+      margin-bottom: 0.8rem;
+
+      & label {
+        display: none;
+      }
+    }
+
+    &__button {
+      margin-top: 1.5rem;
+    }
+  }
+
+
+
+}

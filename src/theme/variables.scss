@@ -16,11 +16,12 @@ $dark-purple: #8ba4f9;
 $green: #6fcf97;
 
 
-
 $border-width: 2px;
 $gradient: linear-gradient($purple, $dark-purple);
 $gradient-transparency: linear-gradient(rgba(188, 156, 255, 0.25), rgba(139, 164, 249, 0.25));
 $modal-width: 380px;
+
+
 
 @mixin arrow {
   position: absolute;
@@ -29,6 +30,7 @@ $modal-width: 380px;
   right: -3px;
   width: 3.5rem;
   height: 3.5rem;
+  pointer-events: none;
 }
 
 @mixin css-arrow {
@@ -38,9 +40,76 @@ $modal-width: 380px;
   height: 7px;
   right: 15px;
   top: 35%;
+  pointer-events: none;
+
   border-bottom: 2px solid $dark-shade_0-50;
   border-right: 2px solid $dark-shade_0-50;
   transform: rotate(45deg);
+}
+
+
+// Общие стили для radio и toggler
+// Они очень похожи, но тем не менее - это разные элементы,
+// и стили для них должны быть раздельными, на тот случай,
+// если подключаем только toggler, или только radio
+@mixin radio-label {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+@mixin radio-box {
+  position: relative;
+  top: 20%;
+  left: 2px;
+
+  margin-right: 10px;
+  height: 18px;
+
+  z-index: 1;
+  pointer-events: none;
+  transition: 0.4s;
+
+  width: 18px;
+  border-radius: 50%;
+}
+
+@mixin radio-hole() {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-sizing: border-box;
+  border: solid 3px transparent;
+  border-radius: inherit;
+  background: white;
+}
+
+@mixin gradient-element {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -1px;
+  border-radius: inherit;
+  background: $gradient;
+}
+
+@mixin radio-after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  box-sizing: border-box;
+  border-radius: inherit;
+  background: $gradient;
+  transition: 0.4s;
 }
 
 

@@ -31,30 +31,35 @@
   }
 
   &--filled {
-    padding: 9px 20px 11px;
+    padding: 7px 20px 9px;
     color: white;
     background: $gradient;
   }
 
-  &--hollow {
-    // Стили + псевдоэлемент позволяют создать градиентный border
-    padding: 7px 20px 9px;
-    background: white;
+  // Hollow
+  &__box {
+    display: inline-block;
+    //padding: 8px 1px;
+    position: relative;
+    border-radius: 20px;
     background-clip: padding-box;
-    border: solid $border-width transparent;
+    z-index: 1;
 
-    &:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -1;
-      margin: -$border-width;
-      border-radius: inherit;
-      background: $gradient;
-    }
+    transition: 0.4s;
+
+
   }
 
+  &__gradient {
+    @include gradient-element();
+    margin: -10px -2px;
+
+  }
+  &--hollow {
+    position: relative;
+    top: -1px;
+    padding: 8px 20px 9px;
+    background: white;
+    border: solid 0 transparent;
+  }
 }

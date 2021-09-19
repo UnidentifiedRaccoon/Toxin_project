@@ -13,7 +13,7 @@
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
 
   &__heading {
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.5rem;
     font-size: 1.75rem;
     font-weight: bold;
   }
@@ -28,7 +28,45 @@
     margin-bottom: 30px;
   }
 
+  &__radio {
+    padding-top: 3px;
+    margin-bottom: 15px;
+
+    & .radio__list {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    & .radio__item {
+      margin-right: 1rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
   &__button button {
     padding: 16px 20px 17px;
+  }
+
+  .modal__entry-data-title {
+    display: inline-block;
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &__bottom-link-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0 0;
+
   }
 }

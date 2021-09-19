@@ -3,12 +3,17 @@
 .calendar {
   position: relative;
   font-family: 'Montserrat', 'Arial', sans-serif;
-  width: 88.5%;
+  width: 100%;
+  max-width: 320px;
   border: 1px solid $dark-shade_0-25;
+
 
   &-box {
     display: flex;
     justify-content: space-between;
+    & .input__field {
+      cursor: pointer;
+    }
   }
 
   // Стили для месяца и года (верхняя строка)
@@ -16,7 +21,6 @@
     color: $dark-shade_1;
     font-size: 1.3rem;
     font-weight: bold;
-
     & > i {
       color: inherit;
     }

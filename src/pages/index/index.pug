@@ -2,24 +2,23 @@ extends ../base/base
 include ../../components/modal/modal
 
 block links
-    link(href="./datepicker/css/datepicker.css" rel="stylesheet")
+    link(href="./plugins/datepicker/css/datepicker.css" rel="stylesheet")
 
 block title
     | Starter kit
 
 block main
-    .main.main--bg-1
-        .slide
-        .slide
-        .slide
+    .index
+        // <div class="slider">
+
         +modal({type: 'find-apartments'})
-        p.main__text-lead.
+        p.index__text-lead.
             Лучшие номера для вашей работы, отдыха
             и просто вдохновения
 
 block scripts
-    script(src="./jquery/jquery-3.6.0.slim.min.js")
-    script(src="./datepicker/js/datepicker.js")
+    script(src="./plugins/jquery/jquery-3.6.0.slim.min.js")
+    script(src="./plugins/datepicker/js/datepicker.js")
     script.
         $(document).ready(function () {
 
@@ -34,7 +33,7 @@ block scripts
                 multipleDatesSeparator: ' - ',
                 clearButton: true,
                 applyButton: true,
-                onSelect: function (fd, d, picker) {
+                onSelect: function (fd) {
                     $('.js--calendar-field--start').val(fd.split("-")[0]);
                     $('.js--calendar-field--end').val(fd.split("-")[1]);
                 }

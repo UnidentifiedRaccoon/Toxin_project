@@ -30,6 +30,12 @@ fs
     .filter((file) => {
       return file.indexOf('base') !== 0;
     })
+    // .filter((file) => {
+    //   return file.indexOf('sign-in') !== 0;
+    // })
+    // .filter((file) => {
+    //   return file.indexOf('sign-up') !== 0;
+    // })
     .forEach((file) => {
       pages.push(file.split('/', 2));
     });
@@ -112,7 +118,7 @@ module.exports = {
       {
         test: /\.js$/,
         use: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.css$/,
@@ -152,16 +158,16 @@ module.exports = {
   plugins: [
       new webpack.HotModuleReplacementPlugin(),
       new webpack.ProgressPlugin(),
-      new CleanWebpackPlugin(),
+      new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery"
+      }),
+      new CleanWebpackPlugin({ cleanStaleWebpackAssets: false}),
       // ToDo найти человека который объяснит как "это" правильно сделать (подключить datepicker/jquery)
       new CopyWebpackPlugin({
         patterns: [{
-          from: path.resolve(__dirname, '../src/plugins/datepicker'),
-          to: path.resolve(__dirname, '../dist/plugins/datepicker')
-        },
-          {
-            from: path.resolve(__dirname, '../src/plugins/jquery'),
-            to: path.resolve(__dirname, '../dist/plugins/jquery')
+            from: path.resolve(__dirname, '../src/pages/catalog/img'),
+            to: path.resolve(__dirname, '../dist/images')
           }]
       }),
       new MiniCssExtractPlugin({

@@ -14,11 +14,13 @@ $dark-shade_0-05: transparentize(#1f2041, 0.95);
 $purple: #bc9cff;
 $dark-purple: #8ba4f9;
 $green: #6fcf97;
+$blue: #66d2ea;
 
 
 $border-width: 2px;
 $gradient: linear-gradient($purple, $dark-purple);
 $gradient-transparency: linear-gradient(rgba(188, 156, 255, 0.25), rgba(139, 164, 249, 0.25));
+$gradient-green: linear-gradient($green, $blue);
 $modal-width: 380px;
 
 
@@ -53,6 +55,8 @@ $modal-width: 380px;
 // и стили для них должны быть раздельными, на тот случай,
 // если подключаем только toggler, или только radio
 @mixin radio-label {
+  font-size: 1rem;
+  color: $dark-shade_0-50;
   display: flex;
   justify-content: flex-start;
   position: relative;
@@ -60,6 +64,7 @@ $modal-width: 380px;
 }
 
 @mixin radio-box {
+  flex-shrink: 0;
   position: relative;
   top: 20%;
   left: 2px;

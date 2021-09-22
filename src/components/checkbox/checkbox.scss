@@ -1,0 +1,56 @@
+@import '../../theme/variables.scss';
+
+.checkbox {
+  &__label {
+    @include radio-label();
+  }
+
+  &__title {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: $dark-shade_0-75;
+  }
+
+  &__text {
+    font-size: 0.9rem;
+  }
+
+  // Градиентная радио-кнопка
+  &__box {
+    @include radio-box();
+    border-radius: 4px;
+
+    & .checkbox__hole {
+      @include radio-hole();
+    }
+
+    & .checkbox__gradient {
+      @include gradient-element();
+    }
+  }
+
+  // checked
+  &__input:checked + .checkbox__box .checkbox__hole::after {
+    content: '';
+    position: absolute;
+    top: 13%;
+    left: 25%;
+    width: 6px;
+    height: 8px;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    border-top: none;
+    border-left: none;
+    border-image: $gradient;
+    border-image-slice: 1;
+    transition: 0.4s;
+    transform: rotate(45deg);
+  }
+
+  // disabled
+  &__input:disabled + .checkbox__box {
+    opacity: 0.5;
+  }
+}
+

@@ -26,17 +26,17 @@
   }
 
   // Особая стилизация для поля email из блока footer
-  &--subscribe .input__field-wrapper {
+  &--subscribe-style .input__field-wrapper {
     position: relative;
 
     // Добавление иконки стрелки
     &::after {
       @include arrow;
-      background: url("./img/icon-arrow.svg") 50% 50% no-repeat;
+      background: url("./img/icon-arrow.svg") 50% 60% no-repeat;
     }
   }
 
-  &--dropdown .input__field-wrapper {
+  &--dropdown-style .input__field-wrapper {
     position: relative;
 
     // Добавление иконки стрелки

@@ -1,0 +1,38 @@
+include ./filter-data.pug
+
+include ../calendar/calendar
+include ../dropdown/dropdown
+include ../checkbox/checkbox
+include ../range-slider/range-slider
+
+mixin filter()
+    form.filter
+        .filter__calendar
+            +calendar({
+                items: [{labelText: "Даты пребывания в отеле", type: "start"}]})
+        .filter__dropdown.filter__dropdown--persons
+            +dropdown({
+                mode: 'persons',
+            })
+        .filter__range
+            +range-slider({
+                title: 'Диапазон цен',
+                text: 'Стоимость за сутки пребывания в номере',
+            })
+        fieldset.filter__fieldset.filter__fieldset--rules
+            legend.filter__legend  Правила дома
+            each item in locals.filter.rules
+                +checkbox(item)
+
+        fieldset.filter__fieldset.filter__fieldset--accessibility
+            legend.filter__legend  Доступность
+            each item in locals.filter.accessibility
+                +checkbox(item)
+        .filter__dropdown.filter__dropdown--facilities
+            +dropdown({
+                mode: 'facilities',
+            })
+        fieldset.filter__fieldset.filter__fieldset--additional
+            legend.filter__legend  Дополнительные удобства
+            each item in locals.filter.additional
+                +checkbox(item)

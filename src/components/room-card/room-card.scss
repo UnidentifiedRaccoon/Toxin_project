@@ -15,7 +15,7 @@
       display: flex;
       justify-content: space-between;
       width: 100%;
-      height: 98%;
+      height: 99%;
       max-height: 150px;
       top: 0;
     }
@@ -70,27 +70,32 @@
   &__info-wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 25px 20px 20px;
+
+
+    & span {
+      display: inline-block;
+    }
   }
 
   &__title {
+    margin: 0;
     color: $dark-shade_1;
     font-size: 1.35rem;
-    line-height: 1.35rem;
     font-weight: bold;
-    margin: 0;
-    margin-right: 0.5rem;
+
 
     & span:first-child {
       font-size: 1rem;
-      margin-right: 0.5rem;
+      margin-right: 0.3rem;
     }
   }
 
   &__luxury-flag {
     margin-right: 0.5rem;
+    padding-top: 0.5rem;
     font-size: 0.9rem;
     font-weight: bold;
     color: $purple;
@@ -98,7 +103,8 @@
   }
 
   &__price {
-      font-weight: bold;
+    padding-top: 0.5rem;
+    font-weight: bold;
       margin-right: 0.5rem;
     &-text {
       color: $dark-shade_0-50;
@@ -112,10 +118,12 @@
       justify-content: space-between;
       width: 100%;
       margin-top: 10px;
-      padding-top: 10px;
+      padding-top: 12px;
       border-top: 1px solid $dark-shade_0-25
     }
     &-text {
+      padding-top: 0.2rem;
+
       color: $dark-shade_0-50;
     }
     &-count {

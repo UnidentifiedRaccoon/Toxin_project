@@ -14,8 +14,12 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "air-datepicker": "^2.2.3",
     "core-js": "^3.17.2",
-    "normalize.css": "^8.0.1"
+    "jquery": "^3.6.0",
+    "normalize.css": "^8.0.1",
+    "nouislider": "^15.4.0",
+    "wnumb": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",

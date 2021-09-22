@@ -1,0 +1,78 @@
+@import '../../theme/variables';
+
+.range-slider {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: 10px;
+
+  &__title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &__fields-wrapper {
+    font-size: 0.9rem;
+    color: $dark-shade_0-50;
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 0.8rem;
+    color: $dark-shade_0-50;
+  }
+
+
+  // noUi stiles for slider
+  &__bar {
+    width: 100%;
+    padding: 25px 0 20px;
+    &.noUi-target {
+      background-color: white;
+      box-shadow: none;
+      border: none;
+    }
+
+    & .noUi-base {
+      height: 6px;
+      box-shadow: 0 0 0 1px  $dark-shade_0-25 inset;
+      border-radius: 4px
+    }
+
+    & .noUi-connect {
+      background: $gradient-green;
+    }
+
+    & .noUi-handle {
+
+      width: 16px;
+      height: 16px;
+      background: $gradient-green;
+      border-radius: 50%;
+      top: -5px;
+      right: -7px;
+      border: 2px solid white;
+      box-shadow: none;
+      &::after,
+      &::before {
+        display: none;
+      }
+    }
+
+    & .noUi-touch-area {
+      position: absolute;
+      top: -3px;
+      left: -3px;
+
+      width: 150%;
+      height: 150%;
+
+      &:hover {
+        border: 1px dashed purple;
+      }
+    }
+  }
+
+}

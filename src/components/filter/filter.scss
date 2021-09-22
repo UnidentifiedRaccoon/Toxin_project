@@ -1,0 +1,43 @@
+.filter {
+
+  &__legend {
+    margin-bottom: 18px;
+    padding-top: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  &__fieldset {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 5px;
+    border: none;
+  }
+
+  &__calendar {
+    margin-bottom: 20px;
+  }
+
+  &__range {
+  }
+
+  & .checkbox {
+    margin-bottom: 5px;
+  }
+
+  &__dropdown {
+
+    &--persons {
+      margin-bottom: 30px;
+    }
+
+    & .input__label {
+      margin-bottom: 4px;
+    }
+
+    &--facilities {
+      padding-top: 5px;
+      margin-bottom: 10px;
+    }
+  }
+}

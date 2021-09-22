@@ -1,0 +1,18 @@
+
+mixin checkbox(options)
+    .checkbox
+        label.checkbox__label
+            input.checkbox__input.visually-hidden(
+                type="checkbox"
+                name=options.name
+                value=options.value
+                disabled=options.disabled
+                checked=options.checked
+            )
+            .checkbox__box
+                .checkbox__hole
+                .checkbox__gradient
+            span.checkbox__info
+                if options.labelTitle
+                    span.checkbox__title= options.labelTitle
+                span.checkbox__text= options.labelText

@@ -1,11 +1,19 @@
 @import '../../theme/variables.scss';
 
+
+
 .calendar {
   position: relative;
   font-family: 'Montserrat', 'Arial', sans-serif;
   width: 100%;
   max-width: 320px;
   border: 1px solid $dark-shade_0-25;
+
+  // Я не могу подруг ому подогнать размер календаря под размер input
+  &.js--filter-calendar {
+    max-width: 275px;
+
+  }
 
 
   &-box {
@@ -53,9 +61,28 @@
     }
 
     &.-selected- {
+      position: relative;
+      padding: 0 3px;
       color: white;
-      background: $gradient;
+      background-image: $gradient;
+      background-clip: content-box;
       border-radius: 50%;
+
+      &.-range-from-::after,
+      &.-range-to-::before {
+        position: absolute;
+        content: "";
+        background-image: $gradient-transparency;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        right: 0;
+      }
+
+      &.-range-to-::before {
+        left: 0;
+        right: 50%;
+      }
     }
 
     &.-in-range- {

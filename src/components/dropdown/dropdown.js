@@ -12,14 +12,25 @@ class Dropdown {
         this.dropdown = element;
         this.field = this.dropdown.querySelector('.dropdown__field')
         this.contentBox = element.querySelector('.dropdown__content-box')
-        this.applyButton= this.contentBox.querySelector('.dropdown__button--apply');
+        let buttons = this.contentBox.querySelectorAll('button');
+        console.log(buttons)
+
+        this.edgeButton = buttons[buttons.length - 1];
+        console.log(this.edgeButton)
 
         this.listenFieldFocus();
-        this.listenEntryTab();
         this.listenExitTab();
+        this.listenEntryTab();
         this.listenInnerButtonClicks();
-        this.listenChangeGuest()
+        this.listenChange()
         this.listenResetAndApply()
+
+        // ToDo спросить у кого-то умного как это лучше сделать
+        let _this = this;
+        this.dropdown.addEventListener('click', function(event) {event.stopPropagation();})
+        window.addEventListener('click', function(event) {
+            _this.apply()
+        })
     }
 
     listenFieldFocus() {
@@ -73,48 +84,76 @@ class Dropdown {
         // При переключении с последней кнопки блока this.contentBox
         // Удаляет класс 'js--dropdown__content-box'(display: block)
         function onTabFieldHandler(event) {
+            console.log('onTabFieldHandler')
             let isTab = event.keyCode === 9
-            let isClassAdded = this.contentBox.classList.contains('js--dropdown__content-box');
+            let isClassAdded = _this.contentBox.classList.contains('js--dropdown__content-box');
             if (isTab && isClassAdded) {
-                this.contentBox.classList.remove('js--dropdown__content-box');
-                this.apply()
+                _this.contentBox.classList.remove('js--dropdown__content-box');
+                _this.apply()
             }
         }
         let _this = this
-        this.applyButton.addEventListener('keydown', onTabFieldHandler.bind(_this))
+        this.edgeButton.addEventListener('keydown', onTabFieldHandler)
     }
 
-    listenChangeGuest() {
-        // Обрабатывает клики увеличивающие и уменьшающие количество гостей
-        function decrease(event) {
-            let parentNode = event.target.parentNode
-            let countElement = parentNode.querySelector('.dropdown__item-count')
-            countElement.textContent = parseInt(countElement.textContent) + 1;
-            let decreaseButton = parentNode.querySelector('.dropdown__item-button--decrease')
-            if (parseInt(countElement.textContent) > 0) {
-                decreaseButton.removeAttribute('disabled')
-            }
-        }
-        function increase(event) {
-            let parentNode = event.target.parentNode
-            let countElement = parentNode.querySelector('.dropdown__item-count')
-            countElement.textContent = parseInt(countElement.textContent) - 1;
-            if (parseInt(countElement.textContent) < 1) {
-                event.target.setAttribute('disabled', 'true')
-            }
-        }
-        function increaseGuestClickHandler(event) {
-            let isIncreaseButton = event.target.classList.contains('dropdown__item-button--increase')
-            if (isIncreaseButton) decrease(event)
-        }
-        function decreaseGuestClickHandler(event) {
-            let isDecreaseButton = event.target.classList.contains('dropdown__item-button--decrease')
-            if (isDecreaseButton) increase(event)
-        }
-        let _this = this;
-        this.contentBox.addEventListener('click', increaseGuestClickHandler.bind(_this))
-        this.contentBox.addEventListener('click', decreaseGuestClickHandler.bind(_this))
+    listenChange() {
+        let _this = this
+        function increase(incBtn, decBtn, value) {
+            console.log("inc")
 
+
+            if (value <= 0) {
+                value = 0;
+                decBtn.removeAttribute('disabled')
+            }
+
+            value++
+
+            if (value >= 20) {
+                value = 20;
+                incBtn.setAttribute('disabled', 'true')
+            }
+
+            return value;
+        }
+
+        function decrease(incBtn, decBtn, value) {
+            console.log("dec")
+
+            if (value >= 20) {
+                value = 20
+                incBtn.removeAttribute('disabled')
+            }
+
+            value--
+
+            if (value <= 0) {
+                value = 0
+                decBtn.setAttribute('disabled', 'true')
+            }
+            return value
+        }
+
+        function handler(event) {
+            console.log(event.target)
+            let isIncrease = (event.target.dataset.operation === 'increase')
+            let isDecrease = (event.target.dataset.operation === 'decrease')
+
+            let parent = event.target.parentNode
+            let countField = parent.querySelector('.dropdown__item-count')
+            let incBtn = parent.querySelector('.dropdown__item-button--increase')
+            let decBtn = parent.querySelector('.dropdown__item-button--decrease')
+            let value = parseInt(countField.textContent)
+
+
+            if (isIncrease) {
+                countField.textContent = increase(incBtn, decBtn, value)
+            } else if (isDecrease) {
+                countField.textContent = decrease(incBtn, decBtn, value)
+            }
+
+        }
+        this.contentBox.addEventListener('click', handler)
     }
 
     listenResetAndApply() {
@@ -145,45 +184,65 @@ class Dropdown {
 
     apply() {
         // Сохранение данных в поле, закрытие this.contentBox
-        let items = this.contentBox.querySelectorAll('.dropdown__item');
-        let guestsAmount = 0;
-        let babiesAmount = 0;
+        const items = this.contentBox.querySelectorAll('.dropdown__button-box');
+        const amounts = []
         for (let i = 0; i < items.length; i++) {
-            let currentItem = items[i];
-            let currentValue = parseInt(currentItem.querySelector('.dropdown__item-count').textContent)
-
-            if (currentItem.dataset.item === '2') {
-                babiesAmount += currentValue;
-
-            } else {
-                guestsAmount += currentValue;
-            }
+            let amountElem = items[i].querySelector('.dropdown__item-count');
+            amounts[i] = parseInt(amountElem.textContent)
         }
-        let result = []
-        if (guestsAmount > 0) {
-            if (guestsAmount === 1) {
-                result.push('1 гость');
-            } else if (guestsAmount < 5) {
-                result.push(guestsAmount + ' гостя');
-            } else if (guestsAmount < 21) {
-                result.push(guestsAmount + ' гостей');
-            }
+        const result = []
+
+        const textForms = {
+            guest: ['гость', 'гостя', 'гостей'],
+            baby: ['младенец', 'младенца', 'младенцев'],
+            sleepRoom: ['спальня', 'спальни', 'спален'],
+            bed: ['кровать', 'кровати', 'кроватей'],
+            bathRoom: ['ванная', 'ванные', 'ванных'],
         }
 
-
-        if (babiesAmount > 0) {
-            if (babiesAmount === 1) {
-                result.push('1 младенец');
-            } else if (babiesAmount < 5) {
-                result.push(babiesAmount + ' младенца');
-            } else if (babiesAmount < 21) {
-                result.push(babiesAmount + ' младенцев');
+        function constructRow(amount, dict) {
+            let row
+            if (amount > 0) {
+                // 11-20, 111-120 итд
+                if (amount % 100 > 10 && amount % 100 < 21) {
+                    row = amount + ' ' + dict[2];
+                } else if (amount % 10 === 1) {
+                    row = '1' + ' ' + dict[0];
+                } else if (amount % 10 < 5) {
+                    row = amount + ' ' + dict[1];
+                } else  {
+                    row = amount + ' ' + dict[2];
+                }
             }
+            return row;
         }
+
+
+
+        if (this.dropdown.dataset.mode === "persons") {
+
+            let guestsAmount = amounts[0] + amounts[1]
+            let babiesAmount = amounts[2]
+
+            result.push(constructRow(guestsAmount, textForms.guest));
+            result.push(constructRow(babiesAmount, textForms.baby));
+        }
+
+        else if (this.dropdown.dataset.mode === "facilities") {
+
+            let slippingRooms = amounts[0];
+            let beds = amounts[1];
+            let bathrooms = amounts[2];
+
+            result.push(constructRow(slippingRooms, textForms.sleepRoom));
+            result.push(constructRow(beds, textForms.bed));
+            result.push(constructRow(bathrooms, textForms.bathRoom));
+        }
+
 
 
         this.field.removeAttribute('readonly');
-        this.field.setAttribute('value', `${result.join(', ')}`)
+        this.field.setAttribute('value', `${result.filter(item => item).join(', ')}`)
         this.field.setAttribute('readonly', 'true');
 
         this.contentBox.classList.remove('js--dropdown__content-box');

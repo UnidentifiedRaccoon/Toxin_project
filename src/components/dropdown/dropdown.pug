@@ -2,7 +2,7 @@ include ../button/button
 include ../input/input
 
 //-
-    options.mode - "persons"/"rooms" - создает дропдаун с соответствующим содержимым
+    options.mode - "persons"/"facilities" - создает дропдаун с соответствующим содержимым
 
 
     Данное решение принято исходя из того, что данные параметры чаще всего остаются неизменными (или редко изменяются)
@@ -10,6 +10,8 @@ include ../input/input
                         для поля dropdown основываясь на options.mode
     options.items - (Не передается в mixin) позволяет задать items
                 - элементы поля dropdown основываясь на options.mode
+    options.items - (Не передается в mixin) позволяет задать items
+
 
 mixin dropdown(options)
 
@@ -23,13 +25,14 @@ mixin dropdown(options)
         //- какие данные следует использовать
         options.items = (options.mode === 'persons') ? personsChoice : conditionsChoice;
         options.placeholder = (options.mode === 'persons') ? 'Сколько гостей' : 'Сколько комнат'
+        options.labelText = (options.mode === 'persons') ? 'Гости' : 'Удобства номера'
 
-    .dropdown(class=modeClass)
+    .dropdown(class=modeClass data-mode=options.mode)
         +input({
-            labelText: 'Гости',
+            labelText: options.labelText,
             type: 'text',
             placeholder: options.placeholder,
-            mode: "dropdown",
+            mode: "dropdown-style",
         })(class="dropdown__field" readonly)
         .dropdown__content-box
             ul.dropdown__list
@@ -39,12 +42,13 @@ mixin dropdown(options)
                         li.dropdown__item(data-item=i++)
                             span.dropdown__item-text= item
                             .dropdown__button-box
-                                input.dropdown__item-button.dropdown__item-button--decrease(type="button" value="-" disabled)
+                                button.dropdown__item-button.dropdown__item-button--decrease(type="button" disabled data-operation="decrease") -
                                 span.dropdown__item-count 0
-                                input.dropdown__item-button.dropdown__item-button--increase(type="button" value="+")
+                                button.dropdown__item-button.dropdown__item-button--increase(type="button" data-operation="increase") +
             //-  Кнопки принятия и сброса
-            .dropdown__bottom-buttons
-                .dropdown__button
-                    +button({text: 'Очистить', type: 'button'})(class='dropdown__button--reset')
-                .dropdown__button
-                    +button({text: 'Применить', type: 'button'})(class='dropdown__button--apply')
+            if options.mode === 'persons'
+                .dropdown__bottom-buttons
+                    .dropdown__button
+                        +button({text: 'Очистить', type: 'button'})(class='dropdown__button--reset')
+                    .dropdown__button
+                        +button({text: 'Применить', type: 'button'})(class='dropdown__button--apply')

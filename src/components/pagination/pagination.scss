@@ -1,0 +1,61 @@
+@import '../../theme/variables.scss';
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  &__list {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    width: 40px;
+    height: 40px;
+    &--ellipsis {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: $dark-shade_0-50;
+    border-radius: 50%;
+
+    &--current {
+      color: white;
+      background: $gradient-purple;
+    }
+  }
+
+  &__button {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: $gradient-green;
+    border: none;
+    border-radius: 50%;
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 40px;
+      height: 40px;
+      top: 12px;
+      left: 12px;
+      background: url("../../assets/img/icons/arrow_forward.svg") no-repeat;
+    }
+
+    &--prev::after {
+      transform: rotate(180deg) translateX(24px) translateY(24px) ;
+    }
+  }
+}

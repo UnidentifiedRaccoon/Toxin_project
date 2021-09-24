@@ -1,0 +1,14 @@
+
+mixin pagination(options)
+    .pagination
+        ul.pagination__list
+            - var i = 1
+            while i <= options.count
+                if (i === options.current)
+                    li.pagination__item
+                        a.pagination__link.pagination__link--current= i
+                else
+                    li.pagination__item
+                        a.pagination__link(href="/mock-address/change-me")= i
+
+                - i++

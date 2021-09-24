@@ -4,6 +4,7 @@ block variables
     include ./catalog-data.pug
     include ../../components/room-card/room-card
     include ../../components/filter/filter
+    include ../../components/pagination/pagination
 
 
 block title
@@ -22,7 +23,11 @@ block main
                         li.catalog__item
                             +room-card(item)
             .catalog__pagination
-                //+pagination()
+                +pagination({
+                    count: 15,
+                    current: 1,
+                })
+                p 1 – 12 из 100+ вариантов аренды
 
 
 

@@ -3,9 +3,7 @@
 .catalog {
   box-sizing: border-box;
   width: 100%;
-  padding: $site-padding;
-  padding-top: 2.25rem;
-  padding-bottom: 2rem;
+  padding: 30px 140px 65px;
   grid-column-gap: 50px;
   display: grid;
   grid-template-areas: 'left right';
@@ -19,10 +17,16 @@
     }
     &-right {
       grid-area: right;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-wrap: wrap;
     }
   }
 
   &__lead {
+    margin-right: auto;
+    padding-top: 5px;
     padding-bottom: 20px;
     font-size: 1.75rem;
     font-weight: bold;
@@ -35,7 +39,7 @@
     align-items: center;
     flex-wrap: wrap;
     margin: 0;
-    padding: 0;
+    padding: 0 0 25px;
     list-style: none;
 
   }
@@ -43,5 +47,9 @@
   &__item {
     width: 32%;
     margin-bottom: 20px;
+  }
+
+  &__pagination {
+    color: $dark-shade_0-75
   }
 }

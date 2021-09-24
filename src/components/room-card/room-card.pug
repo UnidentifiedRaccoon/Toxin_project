@@ -14,7 +14,7 @@ mixin room-card(options)
     - var imageCount = 0;
     article.room-card
         a.room-card__link(href=options.href)
-            .room-card__slider
+            .room-card__slider(data-slider-number=options.number)
                 .room-card__image-wrapper
                     - var isFirst = true;
                     each item in options.slides
@@ -29,14 +29,19 @@ mixin room-card(options)
                     button.room-card__button.room-card__button--next
                 ul.room-card__slider-points
                     - var i = 0
+                    - var isFirst = true;
                     while (i < imageCount)
-                        li.room-card__slider-point
+                        if isFirst
+                            li.room-card__slider-point.room-card__slider-point--current
+                            - isFirst = false
+                        else
+                            li.room-card__slider-point
                         - i++
 
             .room-card__info-wrapper
                 h3.room-card__title
                     span №
-                    span=options.number
+                    span.room-card__number=options.number
                 if (options.isLuxury)
                     span.room-card__luxury-flag люкс
                 span.room-card__price-text

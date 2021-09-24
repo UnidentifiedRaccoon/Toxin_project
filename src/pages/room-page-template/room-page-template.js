@@ -1,0 +1,1 @@
+import './room-page-template.scss'

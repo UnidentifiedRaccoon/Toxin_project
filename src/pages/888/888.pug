@@ -1,0 +1,8 @@
+extends ../base/base
+
+block variables
+        include ../room-page-template/room-page-template-data
+        include ../room-page-template/room-page-template
+
+block main
+        +room-page(locals.roomPageDatabase['888'])

@@ -16,11 +16,13 @@ $dark-purple: #8ba4f9;
 $green: #6fcf97;
 $blue: #66d2ea;
 
-
+$site-padding: 0 10rem;
 $border-width: 2px;
-$gradient: linear-gradient($purple, $dark-purple);
+$gradient-purple: linear-gradient($purple, $dark-purple);
 $gradient-transparency: linear-gradient(rgba(188, 156, 255, 0.25), rgba(139, 164, 249, 0.25));
 $gradient-green: linear-gradient($green, $blue);
+$gradient-gold: linear-gradient(#FFE39C, #FFBA9C);
+$gradient-dark: linear-gradient(#909090, #3D4975);
 $modal-width: 380px;
 
 
@@ -103,7 +105,7 @@ $modal-width: 380px;
   z-index: -1;
   margin: -1px;
   border-radius: inherit;
-  background: $gradient;
+  background: $gradient-purple;
 }
 
 @mixin radio-after {
@@ -113,7 +115,7 @@ $modal-width: 380px;
   height: 12px;
   box-sizing: border-box;
   border-radius: inherit;
-  background: $gradient;
+  background: $gradient-purple;
   transition: 0.4s;
 }
 

@@ -1,0 +1,61 @@
+@import "../../theme/variables";
+
+.piechart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &__canvas {
+    margin-right: 30px;
+  }
+
+  &__legend {
+    padding-top: 20px;
+
+    &-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    &-item {
+      font-size: 0.9rem;
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 10px;
+
+      &--5, &--4, &--3, &--2, &--1 {
+        &::before {
+          position: absolute;
+          content: "";
+          width: 1rem;
+          height: 1rem;
+          top: 0;
+          left: 0;
+          border-radius: 50%;
+        }
+      }
+
+      &--5::before {
+        background: $gradient-gold;
+      }
+
+      &--4::before {
+        background: $gradient-green;
+      }
+
+      &--3::before {
+        background: $gradient-purple;
+      }
+
+      &--2::before {
+        background: $gradient-dark;
+      }
+
+      &--1::before {
+        background: red;
+      }
+
+    }
+  }
+}

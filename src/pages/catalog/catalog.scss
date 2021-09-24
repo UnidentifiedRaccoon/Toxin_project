@@ -1,7 +1,11 @@
+@import '../../theme/variables';
+
 .catalog {
   box-sizing: border-box;
   width: 100%;
-  padding: 2.25rem 10rem 2rem;
+  padding: $site-padding;
+  padding-top: 2.25rem;
+  padding-bottom: 2rem;
   grid-column-gap: 50px;
   display: grid;
   grid-template-areas: 'left right';

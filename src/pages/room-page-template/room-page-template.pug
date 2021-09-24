@@ -1,0 +1,50 @@
+include ../../components/testimonial/testimonial
+include ../../components/piechart/piechart
+include ../../components/modal/modal
+
+mixin room-page(options)
+    .room-page
+        h1.visually-hidden= `Апартаменты ${options.orderInfo.number}`
+        .room-page__images-wrapper
+            img.room-page__image(src=options.images[0])
+            img.room-page__image(src=options.images[1])
+            img.room-page__image(src=options.images[2])
+        .room-page__outer-wrapper
+            .room-page__content-wrapper
+                h2.visually-hidden Общая информация о номере
+                .room-page__benefits-wrapper
+                    h3.room-page__title Сведения о номере
+                    ul.room-page__benefits-list
+                        each item in options.benefits
+                            li.room-page__benefits-item(class=`room-page__benefits-item--${item[2]}`)
+                                h4.room-page__subtitle= item[0]
+                                span.room-page__text= item[1]
+                .room-page__rating
+                    h3.room-page__title Впечатления от номера
+                    +piechart()
+                .room-page__testimonials
+                    h3.room-page__title Отзывы посетителей номера
+                    // Заполнить через js
+                    span.room-page__testimonials-count= options.testimonials.items.length + ' отзыва'
+                    ul.room-page__testimonials-list
+                        each item in options.testimonials.items
+                            li.room-page__text.room-page__testimonials-item
+                                +testimonial(item)
+                .room-page__rules
+                    h3.room-page__title Правила
+                    ul.room-page__rules-list
+                        each item in options.rules
+                            li.room-page__rules-item= item
+                .room-page__cancel
+                    h3.room-page__title Отмена
+                    p.room-page__text.
+                        Бесплатная отмена в течение 48 ч.
+                        После этого при отмене не позднее чем за 5 дн.
+                        до прибытия вы получите полный возврат
+                        за вычетом сбора за услуги.
+            .room-page__wrapper--right
+                +modal({
+                    type: 'room-booking',
+                    info: options.orderInfo,
+                })
+

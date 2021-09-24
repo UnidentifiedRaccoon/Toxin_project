@@ -44,7 +44,62 @@ mixin modal(options)
                     })
 
 
+
     else if options.type === "room-booking"
+        .modal
+            .modal__room-info
+                h3
+                    span №
+                    span=options.info.roomNumber
+                if (options.info.isLuxury)
+                    span.modal__luxury-flag люкс
+                span.modal__price-text
+                    span.modal__price= options.info.roomCost + '₽'
+                    span в сутки
+            form(
+                class="modal__form"
+                id="room-booking-form"
+                action='/mock-address/change-me'
+                autocomplete="off"
+                method="post"
+                target="_self"
+                name="booking"
+            )
+                .modal__calendar-box
+                    +calendar({
+                        items: [
+                            {labelText: "Прибытие", type: "start"},
+                            {labelText: "Выезд", type: "end"}]
+                    })
+                .modal__dropdown
+                    +dropdown({
+                        mode: 'persons',
+                    })
+                .modal__price-estimation
+                    div
+                        span= options.info.roomCost + '₽ ' + "* X суток"
+                        span Сам считай
+                    div
+                        span Сбор за услуги: скидка 2 179₽
+                        span.modal__tooltip(title="Я подсказка")= '!'
+                        span 0₽
+                    div
+                        span Сбор за дополнительные услуги
+                        span.modal__tooltip(title="Я другая подсказка")= '!'
+                        span 300₽
+                    div
+                        span Итого
+                        span
+                        span 1.5₿
+                .modal__button
+                    +button({
+                        text: 'Забронировать',
+                        fillingStyle: 'filled',
+                        widthStyle: 'full',
+                        withArrow: true
+                    })
+
+
 
     else if options.type === "sing-up"
         .modal

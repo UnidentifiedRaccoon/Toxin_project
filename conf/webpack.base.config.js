@@ -166,7 +166,7 @@ module.exports = {
       // ToDo найти человека который объяснит как "это" правильно сделать (подключить datepicker/jquery)
       new CopyWebpackPlugin({
         patterns: [{
-            from: path.resolve(__dirname, '../src/pages/catalog/img'),
+            from: path.resolve(__dirname, '../src/assets/img'),
             to: path.resolve(__dirname, '../dist/images')
           }]
       }),

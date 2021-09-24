@@ -13,10 +13,8 @@ class Dropdown {
         this.field = this.dropdown.querySelector('.dropdown__field')
         this.contentBox = element.querySelector('.dropdown__content-box')
         let buttons = this.contentBox.querySelectorAll('button');
-        console.log(buttons)
 
         this.edgeButton = buttons[buttons.length - 1];
-        console.log(this.edgeButton)
 
         this.listenFieldFocus();
         this.listenExitTab();
@@ -47,7 +45,6 @@ class Dropdown {
         // необходимо добавить класс 'js--dropdown__content-box'
         // Иначе из за потери фокуса focus будет применено
         // css свойство display: none и this.contentBox - скроется
-        console.log('listenInnerButtonClicks')
         function onClickContentBoxHandler(event) {
             let isButton = event.target.tagName === "INPUT"
             let disabled = event.target.disabled
@@ -84,7 +81,6 @@ class Dropdown {
         // При переключении с последней кнопки блока this.contentBox
         // Удаляет класс 'js--dropdown__content-box'(display: block)
         function onTabFieldHandler(event) {
-            console.log('onTabFieldHandler')
             let isTab = event.keyCode === 9
             let isClassAdded = _this.contentBox.classList.contains('js--dropdown__content-box');
             if (isTab && isClassAdded) {
@@ -99,7 +95,6 @@ class Dropdown {
     listenChange() {
         let _this = this
         function increase(incBtn, decBtn, value) {
-            console.log("inc")
 
 
             if (value <= 0) {
@@ -118,7 +113,6 @@ class Dropdown {
         }
 
         function decrease(incBtn, decBtn, value) {
-            console.log("dec")
 
             if (value >= 20) {
                 value = 20
@@ -135,7 +129,6 @@ class Dropdown {
         }
 
         function handler(event) {
-            console.log(event.target)
             let isIncrease = (event.target.dataset.operation === 'increase')
             let isDecrease = (event.target.dataset.operation === 'decrease')
 

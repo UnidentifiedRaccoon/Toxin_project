@@ -1,0 +1,11 @@
+
+
+mixin testimonial(options)
+    article.testimonial
+        .testimonial__wrapper--left
+            img.testimonial__avatar(src=options.avatar)
+            span.testimonial__likes= options.likesCount
+        .testimonial__wrapper--right
+            h4.testimonial__name= `${options.firstName} ${options.sureName}`
+            span.testimonial__time= `${options.timePassed}`
+            p.testimonial__text= `${options.text}`

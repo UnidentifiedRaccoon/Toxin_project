@@ -15,7 +15,6 @@
 
   }
 
-
   &-box {
     display: flex;
     justify-content: space-between;
@@ -64,7 +63,7 @@
       position: relative;
       padding: 0 3px;
       color: white;
-      background-image: $gradient;
+      background-image: $gradient-purple;
       background-clip: content-box;
       border-radius: 50%;
 

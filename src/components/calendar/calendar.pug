@@ -4,9 +4,10 @@ include ../input/input
     options.items - [{}, {}] - массив объектов с данными полей
     options.items[0].labelText - подпись к полю
     options.items[0].type - "start"/"end"
+    options.items[0].dataMode - "catalog"/"index"
 
 mixin calendar(options)
-    .calendar-box
+    .calendar-box(data-mode=options.dataMode)
         - var half = (options.items.length === 2);
         each item in options.items
             +input({
@@ -15,4 +16,4 @@ mixin calendar(options)
                 placeholder: 'ДД.ММ.ГГГГ',
                 mode: 'dropdown-style',
                 half: half,
-            })(class=`js--calendar-field--${item.type}`)
+            })(class=`calendar__input calendar__input--${item.type}`)

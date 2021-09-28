@@ -20,3 +20,5 @@ mixin input(options)
                 type=options.type
                 placeholder=options.placeholder
                 )&attributes(attributes)
+            if (options.mode === 'dropdown-style')
+                span.input__decoration-arrow

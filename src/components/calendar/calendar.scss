@@ -1,19 +1,28 @@
 @import '../../theme/variables.scss';
 
+.calendar-box {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
 
+.datepickers-container {
+  // Таким образом он не перекрывает поля ввода
+  height: 0;
+  width: 100%;
+}
 
 .calendar {
-  position: relative;
-  font-family: 'Montserrat', 'Arial', sans-serif;
-  width: 100%;
-  max-width: 320px;
-  border: 1px solid $dark-shade_0-25;
-
-  // Я не могу подруг ому подогнать размер календаря под размер input
-  &.js--filter-calendar {
-    max-width: 275px;
-
+  &__input:focus + span {
+    transform: rotateX(180deg);
   }
+
+
+  // Изменение стилей заданных плагином
+  position: relative;
+  width: 100%;
+  font-family: 'Montserrat', 'Arial', sans-serif;
+  border: 1px solid $dark-shade_0-25;
 
   &-box {
     display: flex;
@@ -32,16 +41,20 @@
       color: inherit;
     }
   }
-
   // Стили для кнопок prev & next
-  & svg {
-    width: 20px;
-    height: 20px;
+  &__prev,
+  &__next {
+    display: block;
+    font-size: 0;
+    width: 40px;
+    height: 40px;
+  }
 
-    & path {
-      fill: $purple;
-      stroke-width: 0;
-    }
+  &__prev { background: 30% 50% url(../../assets/img/icons/calendar-arrow_back.svg) no-repeat; }
+  &__next { background: 30% 50% url(../../assets/img/icons/calendar-arrow_forward.svg) no-repeat; }
+
+  & .datepicker--content {
+    padding: 10px 18px;
   }
 
   // Стили для названия дней недели
@@ -51,7 +64,9 @@
     text-transform: none;
   }
 
-  & .datepicker--cell {
+  & .datepicker--cell-day {
+    width: 40px;
+    height: 40px;
     font-size: 0.8rem;
     color: $dark-shade_0-50;
 
@@ -61,7 +76,6 @@
 
     &.-selected- {
       position: relative;
-      padding: 0 3px;
       color: white;
       background-image: $gradient-purple;
       background-clip: content-box;
@@ -87,6 +101,11 @@
     &.-in-range- {
       background: $gradient-transparency;
     }
+
+    &.-current- {
+      border-radius: 50%;
+      background: $gradient-green;
+    }
   }
 
   & .datepicker--buttons {
@@ -105,5 +124,5 @@
     border: none;
 
   }
-
 }
+

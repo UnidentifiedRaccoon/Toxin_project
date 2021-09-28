@@ -16,6 +16,22 @@
     text-transform: uppercase;
   }
 
+  .input__field-wrapper {
+    position: relative;
+  }
+
+  // Особая стилизация для поля email из блока footer
+  // Добавление иконки стрелки
+  &--subscribe-style .input__field-wrapper::after {
+    @include arrow;
+    background: url("./img/icon-arrow.svg") 50% 60% no-repeat;
+  }
+
+  // Добавление иконки стрелки --dropdown-style
+  &__decoration-arrow {
+    @include css-arrow;
+  }
+
   &__field {
     box-sizing: border-box;
     width: 100%;
@@ -23,27 +39,10 @@
     color: $dark-shade_1;
     border: 1px solid $dark-shade_0-25;
     border-radius: 2px;
-  }
 
-  // Особая стилизация для поля email из блока footer
-  &--subscribe-style .input__field-wrapper {
-    position: relative;
-
-    // Добавление иконки стрелки
-    &::after {
-      @include arrow;
-      background: url("./img/icon-arrow.svg") 50% 60% no-repeat;
+    &:focus + span {
+      transition: 0.4s;
+      transform: rotate(-135deg);
     }
   }
-
-  &--dropdown-style .input__field-wrapper {
-    position: relative;
-
-    // Добавление иконки стрелки
-    &::after {
-      @include css-arrow;
-    }
-  }
-
-
 }

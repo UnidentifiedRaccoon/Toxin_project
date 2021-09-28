@@ -15,6 +15,12 @@
 
         &--top {
             padding: 7rem 0;
+
+            //@include media-breakpoint-down(1199px) {
+            //    flex-direction: column;
+            //    width: 100%;
+            //    align-items: center;
+            //}
         }
         &--bottom {
             padding: 1.5rem 0;

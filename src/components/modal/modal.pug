@@ -27,6 +27,7 @@ mixin modal(options)
                 )
                 .modal__calendar-box
                     +calendar({
+                        dataMode: "index",
                         items: [
                             {labelText: "Прибытие", type: "start"},
                             {labelText: "Выезд", type: "end"}]
@@ -67,6 +68,7 @@ mixin modal(options)
             )
                 .modal__calendar-box
                     +calendar({
+                        dataMode: "index",
                         items: [
                             {labelText: "Прибытие", type: "start"},
                             {labelText: "Выезд", type: "end"}]

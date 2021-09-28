@@ -17,6 +17,8 @@ $green: #6fcf97;
 $blue: #66d2ea;
 
 $site-padding: 0 10rem;
+
+
 $border-width: 2px;
 $gradient-purple: linear-gradient($purple, $dark-purple);
 $gradient-transparency: linear-gradient(rgba(188, 156, 255, 0.25), rgba(139, 164, 249, 0.25));
@@ -49,6 +51,8 @@ $modal-width: 380px;
   border-bottom: 2px solid $dark-shade_0-50;
   border-right: 2px solid $dark-shade_0-50;
   transform: rotate(45deg);
+  transition: 0.4s;
+
 }
 
 

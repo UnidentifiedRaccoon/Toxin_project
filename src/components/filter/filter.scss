@@ -16,6 +16,11 @@
 
   &__calendar {
     margin-bottom: 20px;
+
+    & .datepicker--cell-day  {
+      width: 34px;
+      height: 34px;
+    }
   }
 
   &__range {

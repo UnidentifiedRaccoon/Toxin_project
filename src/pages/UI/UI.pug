@@ -1,0 +1,57 @@
+extends ../base/base
+
+block variables
+    include ./UI-data
+    include ../../components/input/input
+    include ../../components/dropdown/dropdown
+    include ../../components/calendar/calendar
+    include ../../components/checkbox/checkbox
+    include ../../components/radio/radio
+    include ../../components/toggler/toggler
+    include ../../components/range-slider/range-slider
+    include ../../components/button/button
+    include ../../components/pagination/pagination
+    include ../../components/modal/modal
+
+block main
+    .ui
+        .ui__colors-and-type
+            ul.ui__colors-list
+                each item in locals.uiColors.items
+                    li.ui__colors-item
+                        span.ui__color-box(style=`background: ${item.code}`)
+                        .ui__color-info
+                            h2.ui__color-title= item.title
+                            span.ui__color-code= item.code
+            .ui__titles-wrapper
+                h1.
+                    This one is the sub-section or
+                    widget title
+                h2.
+                    Next one is the item title inside
+                    widgets
+                h3.
+                    This is a label or CTA text
+                p.
+                    This is the body text which is used for most
+                    of the design, like paragraphs, lists, etc.
+        .ui__form-elements
+        .ui__cards
+            .ui__cards-column--1
+                .ui__find-apartaments
+                    +modal({type: 'find-apartments'})
+                .ui__sign-up
+                    +modal({type: 'sign-up'})
+            .ui__cards-column--2
+                .ui__room-booking
+                    +modal({
+                        type: 'room-booking',
+                        info: locals.orderInfo
+                    })
+                .ui__sign-in
+                    +modal({type: 'sign-in'})
+            .ui__cards-column--3
+                .ui__cards-calendar
+
+
+

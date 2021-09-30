@@ -26,6 +26,32 @@ $gradient-green: linear-gradient($green, $blue);
 $gradient-gold: linear-gradient(#FFE39C, #FFBA9C);
 $gradient-dark: linear-gradient(#909090, #3D4975);
 $modal-width: 380px;
+$modal-width-slim: 320px;
+
+@mixin h1-style {
+  font-size: 24px;
+  font-weight: bold;
+  color: $dark-shade_1;
+}
+
+@mixin h2-style {
+  font-size: 19px;
+  font-weight: bold;
+
+  color: $dark-shade_1;
+}
+
+@mixin h3-style {
+  font-size: 12px;
+  color: $dark-shade_1;
+}
+
+@mixin text-style {
+  font-size: 14px;
+  color: $dark-shade_0-75;
+}
+
+
 
 
 

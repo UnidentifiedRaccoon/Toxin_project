@@ -1,0 +1,108 @@
+@import '../../theme/variables';
+
+.ui {
+  padding-top: 40px;
+  width: 1240px;
+  margin: 0 auto;
+
+  &__colors-and-type {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 60px;
+  }
+
+  &__colors-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    min-width: 600px;
+    max-width: 600px;
+    list-style: none;
+  }
+
+  &__colors-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 280px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+
+    &:nth-child(2) span { opacity: 0.75; }
+    &:nth-child(3) span { opacity: 0.50; }
+    &:nth-child(4) span { opacity: 0.25; }
+    &:nth-child(5) span { opacity: 0.05; }
+  }
+
+  &__color-box {
+    display: block;
+    margin-right: 20px;
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+  }
+
+  &__titles-wrapper {
+    &  > * {
+      position: relative;
+      text-align: center;
+      padding-left: 40px;
+    }
+    & > *:nth-child(1)::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 24px;
+      content: "H1";
+      color: $dark-shade_0-25;
+    }
+    & > *:nth-child(2)::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 19px;
+      content: "H2";
+      color: $dark-shade_0-25;
+    }
+    & > *:nth-child(3)::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 12px;
+      content: "H3";
+      color: $dark-shade_0-25;
+    }
+    & > *:nth-child(4)::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 14px;
+      content: "Body";
+      color: $dark-shade_0-25;
+    }
+  }
+
+  ///////////////
+  //// Cards ////
+  ///////////////
+  &__cards {
+    display: grid;
+    grid-template-columns: 380px 380px 320px;
+    grid-template-areas:  "col-1 col-2 col-3";
+    grid-gap: 40px;
+    width: 100%;
+
+    & > * > * {
+      margin-bottom: 40px;
+    }
+
+    &-column {
+      &--1 { grid-area: col-1; }
+      &--2 { grid-area: col-2; }
+      &--3 { grid-area: col-3; }
+    }
+  }
+}

@@ -19,10 +19,10 @@ mixin room-card(options)
                     - var isFirst = true;
                     each item in options.slides
                         if isFirst
-                            img.room-card__slide(src=item)
+                            img.room-card__slide(src=item height="150px")
                             - isFirst = false
                         else
-                            img.room-card__slide.room-card__slide--hidden(src=item)
+                            img.room-card__slide.room-card__slide--hidden(src=item height="150px")
                         - imageCount++
                 .room-card__slider-buttons
                     button.room-card__button.room-card__button--prev

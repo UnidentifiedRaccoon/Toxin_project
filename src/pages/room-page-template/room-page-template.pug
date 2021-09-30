@@ -6,9 +6,12 @@ mixin room-page(options)
     .room-page
         h1.visually-hidden= `Апартаменты ${options.orderInfo.number}`
         .room-page__images-wrapper
-            img.room-page__image(src=options.images[0])
-            img.room-page__image(src=options.images[1])
-            img.room-page__image(src=options.images[2])
+            .room-page__image-box
+                img.room-page__image(src=options.images[0])
+            .room-page__image-box
+                img.room-page__image(src=options.images[1])
+            .room-page__image-box
+                img.room-page__image(src=options.images[2])
         .room-page__outer-wrapper
             .room-page__content-wrapper
                 h2.visually-hidden Общая информация о номере

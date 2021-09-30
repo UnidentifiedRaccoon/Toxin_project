@@ -13,10 +13,14 @@ block title
 block main
     .catalog
         .catalog__wrapper-left
+
             .catalog__filter
                 +filter()
         .catalog__wrapper-right
-            .catalog__lead  Номера, которые мы для вас подобрали
+            .catalog__lead-wrapper
+                .catalog__lead  Номера, которые мы для вас подобрали
+                button.catalog__filter-toggle
+
             .catalog__cards-box
                 ul.catalog__list
                     each item in locals.roomCardsInfo

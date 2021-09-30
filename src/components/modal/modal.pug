@@ -9,7 +9,7 @@ include ../calendar/calendar
 
 
 mixin modal(options)
-    //- options.type - find-apartments"/"room-booking"/"sing-up"/"sing-in"
+    //- options.type - find-apartments"/"room-booking"/"sign-up"/"sign-in"
         - позволяет выбрать какое модальное окно необходимо добавить -
 
 
@@ -103,17 +103,17 @@ mixin modal(options)
 
 
 
-    else if options.type === "sing-up"
+    else if options.type === "sign-up"
         .modal
             b.modal__heading Регистрация аккаунта
             form(
                 class="modal__form"
-                id="sing-up-form"
+                id="sign-up-form"
                 action='/mock-address/change-me'
                 autocomplete="off"
                 method="post"
                 target="_self"
-                name="sing-up"
+                name="sign-up"
             )
                 .modal__input
                     +input({
@@ -175,17 +175,17 @@ mixin modal(options)
 
 
 
-    else if options.type === "sing-in"
+    else if options.type === "sign-in"
         .modal
             b.modal__heading Войти
             form(
                 class="modal__form"
-                id="sing-in-form"
+                id="sign-in-form"
                 action='/mock-address/change-me'
                 autocomplete="off"
                 method="post"
                 target="_self"
-                name="sing-in"
+                name="sign-in"
             )
                 .modal__input
                     +input({

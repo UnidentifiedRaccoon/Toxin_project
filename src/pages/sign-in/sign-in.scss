@@ -1,9 +1,9 @@
 .sign-in {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  padding: 165px 100px;
+  padding: 165px 0;
   width: 100%;
 
   & .slider {
@@ -11,14 +11,12 @@
       animation-name: slide2;
       animation-duration: 20s;
       animation-delay: 0s;
-      background-position: 0 50%;
     }
 
     &__slide-4 {
       animation-name: slide2;
       animation-duration: 20s;
       animation-delay: 10s;
-      background-position: 0 bottom;
     }
   }
 

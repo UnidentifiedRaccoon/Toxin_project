@@ -12,7 +12,9 @@ mixin header(options)
   .header
     .header__logo
       +logo()
-    .header__menu
-      +main-navigation({items: options.menuItems})
-    .header__guestMenu
-      +main-navigation({items: options.guestMenuItems})
+    button.header__menu-toggle
+    .header__menu-wrapper
+      .header__menu
+        +main-navigation({items: options.menuItems})
+      .header__guest-menu
+        +main-navigation({items: options.guestMenuItems})

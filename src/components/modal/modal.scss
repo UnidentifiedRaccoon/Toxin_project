@@ -151,4 +151,14 @@
   }
 
 
+  @include media-breakpoint-down(400px) {
+    padding: 40px 15px 30px 15px;
+    width: $modal-width-slim;
+    &__calendar-box {
+      & .datepicker--cell-day {
+        height: 36px;
+      }
+    }
+  }
+
 }

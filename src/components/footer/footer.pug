@@ -46,6 +46,8 @@ mixin footer(options)
                 })
 
         .footer__row.footer__row--bottom
+            .footer__mobile-logo
+                +logo()
             .footer__copyright
                 - var data = new Date();
                 - var currentYear = data.getFullYear();

@@ -11,21 +11,24 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) inset ;
 
   &__slide-1 {
-    background: url('./img/image@1x.jpg') no-repeat ;
+    background: url('./img/image@1x.jpg') no-repeat center;
+    background-size: cover;
     animation: slide3 30s linear infinite;
     animation-delay: 0s;
     opacity: 0;
   }
 
   &__slide-2 {
-    background: url('./img/image2@1x.jpg') no-repeat;
+    background: url('./img/image2@1x.jpg') no-repeat center;
+    background-size: cover;
     animation: slide3 30s linear 10s infinite;
     animation-delay: 10s;
     opacity: 0;
   }
 
   &__slide-3 {
-    background: url('./img/image3@1x.jpg') no-repeat;
+    background: url('./img/image3@1x.jpg') no-repeat center;
+    background-size: cover;
     animation: slide3 30s linear  infinite;
     animation-delay: 20s;
     opacity: 0;
@@ -33,7 +36,8 @@
 
 
   &__slide-4 {
-    background: url('./img/image4@1x.jpg') no-repeat;
+    background: url('./img/image4@1x.jpg') no-repeat center;
+    background-size: cover;
     animation: slide3 30s linear infinite;
     animation-delay: 30s;
     opacity: 0;

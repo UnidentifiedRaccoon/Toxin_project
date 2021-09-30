@@ -1,7 +1,11 @@
+@import '../../theme/variables.scss';
+
 .index {
   position: relative;
   padding: 72px 140px 385px;
   width: 100%;
+  transition: 2s;
+
 
   &__text-lead {
     position: absolute;
@@ -10,5 +14,15 @@
     max-width: 300px;
     line-height: 1.5rem;
     text-align: right;
+  }
+
+
+  @include media-breakpoint-down(1000px) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 72px 0 385px;
+    transition: 2s;
+
   }
 }

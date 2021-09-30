@@ -1,13 +1,17 @@
 @import '../../theme/variables.scss';
 
 .footer {
+    box-sizing: border-box;
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
     flex-wrap: wrap;
     padding: $site-padding;
 
 
     &__row {
+        box-sizing: border-box;
+        width: 100%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -15,12 +19,6 @@
 
         &--top {
             padding: 7rem 0;
-
-            //@include media-breakpoint-down(1199px) {
-            //    flex-direction: column;
-            //    width: 100%;
-            //    align-items: center;
-            //}
         }
         &--bottom {
             padding: 1.5rem 0;
@@ -65,8 +63,37 @@
         }
     }
 
+    &__mobile-logo {
+        display: none;
+    }
+
     &__copyright {
         color: $dark-shade_0-75;
+        text-align: center;
+    }
+
+    @include media-breakpoint-down(1000px) {
+        padding: 0;
+        &__row {
+            &--top {
+                display: none;
+            }
+            &--bottom {
+                padding: 50px 20px;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-around;
+            }
+        }
+
+        &__mobile-logo {
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        &__copyright {
+            margin-bottom: 20px;
+        }
     }
 
 }

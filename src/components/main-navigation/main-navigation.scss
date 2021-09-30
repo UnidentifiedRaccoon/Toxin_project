@@ -1,11 +1,21 @@
 @import '../../theme/variables.scss';
 
 .main-navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   &__item {
+    flex-grow: 1;
     display: inline;
-
     &:first-child {
       margin-left: 0;
     }
+  }
+
+  @include media-breakpoint-down(1199px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }

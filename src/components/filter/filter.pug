@@ -9,7 +9,7 @@ mixin filter()
     form.filter
         .filter__calendar
             +calendar({
-                dataMode: "catalog",
+                dataMode: "one-field-range",
                 items: [{labelText: "Даты пребывания в отеле", type: "start"}]})
         .filter__dropdown.filter__dropdown--persons
             +dropdown({

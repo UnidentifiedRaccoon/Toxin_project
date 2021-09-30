@@ -6,12 +6,6 @@
   justify-content: space-between;
 }
 
-.datepickers-container {
-  // Таким образом он не перекрывает поля ввода
-  height: 0;
-  width: 100%;
-}
-
 .calendar {
   &__input:focus + span {
     transform: rotateX(180deg);
@@ -19,7 +13,6 @@
 
 
   // Изменение стилей заданных плагином
-  position: relative;
   width: 100%;
   font-family: 'Montserrat', 'Arial', sans-serif;
   border: 1px solid $dark-shade_0-25;

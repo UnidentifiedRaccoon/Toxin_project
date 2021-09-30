@@ -27,7 +27,7 @@ mixin modal(options)
                 )
                 .modal__calendar-box
                     +calendar({
-                        dataMode: "index",
+                        dataMode: "two-fields-range",
                         items: [
                             {labelText: "Прибытие", type: "start"},
                             {labelText: "Выезд", type: "end"}]
@@ -68,7 +68,7 @@ mixin modal(options)
             )
                 .modal__calendar-box
                     +calendar({
-                        dataMode: "index",
+                        dataMode: "two-fields-range",
                         items: [
                             {labelText: "Прибытие", type: "start"},
                             {labelText: "Выезд", type: "end"}]
@@ -118,12 +118,12 @@ mixin modal(options)
                 .modal__input
                     +input({
                         type: "text",
-                        placeholder: "Имя",
+                        placeholder: "Имя"
                     })
                 .modal__input
                     +input({
                         type: "text",
-                        placeholder: "Фамилия",
+                        placeholder: "Фамилия"
                     })
                 .modal__radio
                     +radio({
@@ -137,6 +137,7 @@ mixin modal(options)
                         }]}
                         )
                 +calendar({
+                    dataMode: "one-field",
                     items: [{labelText: "Дата рождения", type: "start"}]
                 })
                 .modal__entry-data-box
@@ -145,12 +146,12 @@ mixin modal(options)
                     .modal__input
                         +input({
                             type: "email",
-                            placeholder: "Email",
+                            placeholder: "Email"
                         })
                     .modal__input
                         +input({
                             type: "password",
-                            placeholder: "Пароль",
+                            placeholder: "Пароль"
                         })
                     .modal__toggler
                         +toggler({
@@ -190,12 +191,12 @@ mixin modal(options)
                 .modal__input
                     +input({
                         type: "email",
-                        placeholder: "Email",
+                        placeholder: "Email"
                     })
                 .modal__input
                     +input({
                         type: "password",
-                        placeholder: "Пароль",
+                        placeholder: "Пароль"
                     })
                 .modal__button
                     +button({

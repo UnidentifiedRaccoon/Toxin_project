@@ -1,44 +1,10 @@
 import './calendar.scss';
-
-// Если у вас "убегает" календарь - закомментируйте строчки в datepicker.js
-// set date (val) { - в этом сэттере запретить изменение координат
-//.............................................
-        // if (this.visible && this.elIsInput) {
-        //     this.setPosition();
-        // }
-//.............................................
-
-
-// set view (val) { - в этом сэттере запретить изменение координат
-//.............................................
-// if (this.elIsInput && this.visible) this.setPosition();
-//.............................................
-
 import 'air-datepicker/dist/js/datepicker.js';
 import 'air-datepicker/dist/css/datepicker.min.css';
-
 
 const firstInputClass = '.calendar__input--start'
 const secondInputClass = '.calendar__input--end'
 
-function setSecondInput(inputFinish) {
-    function bindKeyboardEvents() {
-        inputFinish.on('keydown.adp', this._onKeyDown.bind(this));
-        inputFinish.on('keyup.adp', this._onKeyUp.bind(this));
-        inputFinish.on('hotKey.adp', this._onHotKey.bind(this));
-    }
-    function focusHandler() {
-        currentDatepicker.$datepicker[0].classList.add('active')
-        currentDatepicker.$datepicker[0].style.left = '0px'
-        currentDatepicker.$datepicker[0].style.top = currentDatepicker.el.closest('.calendar-box').offsetHeight + 12 + 'px'
-    }
-
-    let currentDatepicker = $(firstInputClass).datepicker().data('datepicker');
-
-    inputFinish.on('focus', focusHandler)
-    inputFinish.on('blur', currentDatepicker.hide.bind(currentDatepicker))
-    bindKeyboardEvents.bind(currentDatepicker)()
-}
 
 let options = {
     prevHtml: '<span class="calendar__prev">arrow_back</span>',
@@ -47,81 +13,137 @@ let options = {
     clearButton: true,
     navTitles: { days: 'MM <i>yyyy</i>' },
     // inline: true,
-    onShow(inst) {
-        inst.$datepicker[0].style.left = '0px'
-        inst.$datepicker[0].style.top = inst.el.closest('.calendar-box').offsetHeight + 12 + 'px'
-    },
+    // onShow(inst) {
+    //     inst.$datepicker[0].style.left = '0px'
+    //     inst.$datepicker[0].style.top = inst.el.closest('.calendar-box').offsetHeight + 12 + 'px'
+    // },
 }
 
-
-function setSpecialOptions(mode) {
+function setOpts(mode) {
     // Конфигурация для каждого из календарей может отличаться от стандартной
     // Настроим эти конфигурации
     function onRenderCell(date, cellType) {
-        if (cellType === 'day' && date.getDate() === options.minDate.getDate()) {
+        if (cellType === 'day' && date.getDate() === (new Date()).getDate()) {
             return {
                 disabled: true
             }
         }
     }
 
-    if (mode === "index") {
-    // if (mode === "two-fields-range") {
-        options.minDate = new Date()
-        options.range = true
-        options.onRenderCell = onRenderCell
-        options.multipleDatesSeparator = ' - '
-        options.onSelect = function (fd) {
-            $(firstInputClass).val(fd.split("-")[0]);
-            $(secondInputClass).val(fd.split("-")[1]);
+    if (mode === "two-fields-range") {
+        let additionalOpts = {
+            minDate: new Date(),
+            range: true,
+            onRenderCell: onRenderCell,
+            multipleDatesSeparator: ' - ',
+            onSelect: function (fd) {
+                $(firstInputClass).val(fd.split("-")[0]);
+                $(secondInputClass).val(fd.split("-")[1]);
+            },
         }
+        return Object.assign({}, options, additionalOpts)
     }
 
-    if (mode === "catalog") {
-    // if (mode === "one-field-range") {
-        options.minDate = new Date()
-        options.range = true
-        options.dateFormat = 'd, M'
-        options.onRenderCell = onRenderCell
-        options.onSelect = function (fd) {
-            let arr = fd.split(",")
-            let row
-            if (arr.length === 2) row = `${arr[0]} ${arr[1]}`
-            else if ((arr.length === 4)) row = `${arr[0]} ${arr[1]} - ${arr[2]} ${arr[3]}`
-            else row = fd
+    if (mode === "one-field-range") {
+        let additionalOpts = {
+            minDate: new Date(),
+            range: true,
+            dateFormat: 'd, M',
+            onRenderCell: onRenderCell,
+            onSelect: function (fd) {
+                let arr = fd.split(",")
+                let row
+                if (arr.length === 2) row = `${arr[0]} ${arr[1]}`
+                else if ((arr.length === 4)) row = `${arr[0]} ${arr[1]} - ${arr[2]} ${arr[3]}`
+                else row = fd
 
-            $(firstInputClass).val(row);
+                $(firstInputClass).val(row);
+            },
         }
+        return Object.assign({}, options, additionalOpts)
     }
+
+    if (mode === "one-field") {
+        return Object.assign({}, options)
+    }
+}
+
+function show(box, event) {
+    if (event.type === 'click') { event.stopPropagation(); }
+    this.$datepicker[0].classList.add('active')
+    this.$datepicker[0].style.left = '0px'
+    this.$datepicker[0].style.top = box.offsetHeight + 12 + 'px'
+}
+
+function hide(event) {
+    if (event.type === 'click') { event.stopPropagation(); }
+    this.$datepicker[0].classList.remove('active')
+}
+
+function addApplyButton(box, datepicker) {
+    let buttonsWrapper = box.querySelector('.datepicker--buttons');
+    let applyButton = document.createElement('span')
+    applyButton.textContent = "Применить"
+    applyButton.setAttribute('data-action', 'hide')
+    applyButton.setAttribute('class', 'datepicker--button')
+    applyButton.addEventListener('click', hide.bind(datepicker))
+    buttonsWrapper.append(applyButton);
+}
+
+function setInput(input, box, datepicker) {
+    function bindKeyboardEvents() {
+        input.on('keydown.adp', this._onKeyDown.bind(this));
+        input.on('keyup.adp', this._onKeyUp.bind(this));
+        input.on('hotKey.adp', this._onHotKey.bind(this));
+    }
+
+
+    box.addEventListener('focus', show.bind(datepicker, box), true)
+    box.addEventListener('click', show.bind(datepicker, box))
+    box.addEventListener('blur', hide.bind(datepicker), true)
+    window.addEventListener('click', hide.bind(datepicker))
+    bindKeyboardEvents.bind(datepicker)()
 }
 
 
 $(function() {
     let calendarBox = $('.calendar-box')
     if (calendarBox.length) {
-        // Дополняет базовые опции в зависимости от вып. условий
-        setSpecialOptions(calendarBox[0].dataset.mode)
+        [...calendarBox].forEach(box => {
+            let jQbox = $(box)
+            let currentOpts = setOpts(box.dataset.mode)
+            let datepicker = jQbox.datepicker().data('datepicker')
 
-        // Инициализируем календарь на первом input
-        $(firstInputClass).datepicker(options)
+            // Инициализация календаря
+            jQbox.datepicker(currentOpts)
 
-        // Если у нас календарь предполагает использование
-        // второго поля input, то добавляем и его
-        let inputFinish = $(secondInputClass)
-        if (inputFinish) {
-            setSecondInput(inputFinish)
-        }
-
-        // Вставляем календарь непосредственно в calendarBox (по дефолту от встраивается в конец body)
-        let datepickerContainer = $('.datepickers-container')
-        calendarBox.append(datepickerContainer)
+            // Перемещение календаря
+            let datepickerElem = jQbox.find('.datepicker.calendar')
+            jQbox.append(datepickerElem)
+            let inlineElement = jQbox.find('.datepicker-inline')
+            jQbox.remove(inlineElement)
 
 
-        // Добавляем кнопку принять
-        let buttonsWrapper = $('.datepicker--buttons');
-        let applyButton = `<span class="datepicker--button" data-action="hide">Применить</span>`
-        buttonsWrapper.append(applyButton);
+
+
+
+            let inputStart = jQbox.find(firstInputClass)
+            setInput(inputStart, box, datepicker)
+
+            let inputFinish = box.querySelector(secondInputClass)
+            if (inputFinish) {
+                setInput($(inputFinish), box, datepicker)
+                inputFinish.addEventListener('keydown', event => {
+                    if (event.keyCode === '9') {hide.bind(datepicker)()}
+                })
+            }
+
+
+            addApplyButton(box, datepicker)
+
+        })
     }
+
 
 })
 

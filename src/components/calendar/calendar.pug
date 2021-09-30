@@ -4,7 +4,7 @@ include ../input/input
     options.items - [{}, {}] - массив объектов с данными полей
     options.items[0].labelText - подпись к полю
     options.items[0].type - "start"/"end"
-    options.items[0].dataMode - "catalog"/"index"
+    options.items[0].dataMode - "one-field-range"/"two-fields-range"
 
 mixin calendar(options)
     .calendar-box(data-mode=options.dataMode)

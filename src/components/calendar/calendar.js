@@ -13,10 +13,13 @@ let options = {
     clearButton: true,
     navTitles: { days: 'MM <i>yyyy</i>' },
     // inline: true,
-    // onShow(inst) {
-    //     inst.$datepicker[0].style.left = '0px'
-    //     inst.$datepicker[0].style.top = inst.el.closest('.calendar-box').offsetHeight + 12 + 'px'
-    // },
+    onShow(inst) {
+        inst.$datepicker[0].style.left = '0px'
+        inst.$datepicker[0].style.top = inst.el.closest('.calendar-box').offsetHeight + 12 + 'px'
+    },
+    onSelect(fd, date, inst) {
+        inst.$el.find(firstInputClass).val(fd);
+    },
 }
 
 function setOpts(mode) {
@@ -36,9 +39,9 @@ function setOpts(mode) {
             range: true,
             onRenderCell: onRenderCell,
             multipleDatesSeparator: ' - ',
-            onSelect: function (fd) {
-                $(firstInputClass).val(fd.split("-")[0]);
-                $(secondInputClass).val(fd.split("-")[1]);
+            onSelect: function (fd, data, inst) {
+                inst.$el.find(firstInputClass).val(fd.split("-")[0]);
+                inst.$el.find(secondInputClass).val(fd.split("-")[1]);
             },
         }
         return Object.assign({}, options, additionalOpts)
@@ -50,14 +53,14 @@ function setOpts(mode) {
             range: true,
             dateFormat: 'd, M',
             onRenderCell: onRenderCell,
-            onSelect: function (fd) {
+            onSelect: function (fd, date, inst) {
                 let arr = fd.split(",")
                 let row
                 if (arr.length === 2) row = `${arr[0]} ${arr[1]}`
                 else if ((arr.length === 4)) row = `${arr[0]} ${arr[1]} - ${arr[2]} ${arr[3]}`
                 else row = fd
 
-                $(firstInputClass).val(row);
+                inst.$el.find(firstInputClass).val(row);
             },
         }
         return Object.assign({}, options, additionalOpts)
@@ -67,18 +70,10 @@ function setOpts(mode) {
         return Object.assign({}, options)
     }
 }
-
-function show(box, event) {
-    if (event.type === 'click') { event.stopPropagation(); }
-    this.$datepicker[0].classList.add('active')
-    this.$datepicker[0].style.left = '0px'
-    this.$datepicker[0].style.top = box.offsetHeight + 12 + 'px'
-}
-
-function hide(event) {
-    if (event.type === 'click') { event.stopPropagation(); }
-    this.$datepicker[0].classList.remove('active')
-}
+//
+// function hide(event) {
+//     this.hide()
+// }
 
 function addApplyButton(box, datepicker) {
     let buttonsWrapper = box.querySelector('.datepicker--buttons');
@@ -86,22 +81,29 @@ function addApplyButton(box, datepicker) {
     applyButton.textContent = "Применить"
     applyButton.setAttribute('data-action', 'hide')
     applyButton.setAttribute('class', 'datepicker--button')
-    applyButton.addEventListener('click', hide.bind(datepicker))
+    applyButton.addEventListener('click', datepicker.hide.bind(datepicker))
     buttonsWrapper.append(applyButton);
 }
 
-function setInput(input, box, datepicker) {
+function setInput(input, datepicker) {
     function bindKeyboardEvents() {
         input.on('keydown.adp', this._onKeyDown.bind(this));
         input.on('keyup.adp', this._onKeyUp.bind(this));
         input.on('hotKey.adp', this._onHotKey.bind(this));
     }
 
+    function bindEvents() {
+        input.on(this.opts.showEvent + '.adp', this._onShowEvent.bind(this));
+        input.on('mouseup.adp', this._onMouseUpEl.bind(this));
+        input.on('blur.adp', this._onBlur.bind(this));
+        input.on('keyup.adp', this._onKeyUpGeneral.bind(this));
+        $(window).on('resize.adp', this._onResize.bind(this));
+        $('body').on('mouseup.adp', this._onMouseUpBody.bind(this));
+        this.$datepicker.on('mousedown', this._onMouseDownDatepicker.bind(this));
+        this.$datepicker.on('mouseup', this._onMouseUpDatepicker.bind(this));
+    }
 
-    box.addEventListener('focus', show.bind(datepicker, box), true)
-    box.addEventListener('click', show.bind(datepicker, box))
-    box.addEventListener('blur', hide.bind(datepicker), true)
-    window.addEventListener('click', hide.bind(datepicker))
+    bindEvents.bind(datepicker)()
     bindKeyboardEvents.bind(datepicker)()
 }
 
@@ -120,27 +122,19 @@ $(function() {
             // Перемещение календаря
             let datepickerElem = jQbox.find('.datepicker.calendar')
             jQbox.append(datepickerElem)
-            let inlineElement = jQbox.find('.datepicker-inline')
-            jQbox.remove(inlineElement)
-
-
-
+            let inlineElement =box.querySelector('.datepicker-inline')
+            box.removeChild(inlineElement)
 
 
             let inputStart = jQbox.find(firstInputClass)
-            setInput(inputStart, box, datepicker)
+            setInput(inputStart, datepicker)
 
-            let inputFinish = box.querySelector(secondInputClass)
-            if (inputFinish) {
-                setInput($(inputFinish), box, datepicker)
-                inputFinish.addEventListener('keydown', event => {
-                    if (event.keyCode === '9') {hide.bind(datepicker)()}
-                })
+            let inputFinish = jQbox.find(secondInputClass)
+            if (inputFinish.length > 0) {
+                setInput(inputFinish, datepicker)
             }
 
-
             addApplyButton(box, datepicker)
-
         })
     }
 

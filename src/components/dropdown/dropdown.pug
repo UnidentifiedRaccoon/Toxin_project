@@ -43,7 +43,7 @@ mixin dropdown(options)
                             span.dropdown__item-text= item
                             .dropdown__button-box
                                 button.dropdown__item-button.dropdown__item-button--decrease(type="button" disabled data-operation="decrease") -
-                                span.dropdown__item-count 0
+                                input.dropdown__item-count(value='0' min='0', max='20')
                                 button.dropdown__item-button.dropdown__item-button--increase(type="button" data-operation="increase") +
             //-  Кнопки принятия и сброса
             if options.mode === 'persons'

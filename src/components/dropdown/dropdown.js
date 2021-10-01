@@ -20,13 +20,14 @@ class Dropdown {
         this.listenExitTab();
         this.listenEntryTab();
         this.listenInnerButtonClicks();
+        this.listenChangeButtonsClick()
         this.listenChange()
         this.listenResetAndApply()
 
         // ToDo спросить у кого-то умного как это лучше сделать
         let _this = this;
         this.dropdown.addEventListener('click', function(event) {event.stopPropagation();})
-        window.addEventListener('click', function(event) {
+        window.addEventListener('click', function() {
             _this.apply()
         })
     }
@@ -93,56 +94,53 @@ class Dropdown {
     }
 
     listenChange() {
-        let _this = this
-        function increase(incBtn, decBtn, value) {
-
-
-            if (value <= 0) {
-                value = 0;
-                decBtn.removeAttribute('disabled')
-            }
-
-            value++
-
-            if (value >= 20) {
-                value = 20;
-                incBtn.setAttribute('disabled', 'true')
-            }
-
-            return value;
-        }
-
-        function decrease(incBtn, decBtn, value) {
-
-            if (value >= 20) {
-                value = 20
-                incBtn.removeAttribute('disabled')
-            }
-
-            value--
-
-            if (value <= 0) {
-                value = 0
-                decBtn.setAttribute('disabled', 'true')
-            }
-            return value
-        }
-
         function handler(event) {
-            let isIncrease = (event.target.dataset.operation === 'increase')
-            let isDecrease = (event.target.dataset.operation === 'decrease')
+            let isChangeButton = event.target.classList.contains('dropdown__item-button')
+            let isCountField = event.target.classList.contains('dropdown__item-count')
 
-            let parent = event.target.parentNode
-            let countField = parent.querySelector('.dropdown__item-count')
-            let incBtn = parent.querySelector('.dropdown__item-button--increase')
-            let decBtn = parent.querySelector('.dropdown__item-button--decrease')
-            let value = parseInt(countField.textContent)
+            if (isChangeButton || isCountField) {
+                let parent = event.target.closest('.dropdown__button-box')
+                let incBtn = parent.querySelector('.dropdown__item-button--increase')
+                let decBtn = parent.querySelector('.dropdown__item-button--decrease')
+                let countField = parent.querySelector('.dropdown__item-count')
+                let value = parseInt(countField.value)
+                let max = parseInt(countField.max)
+                let min = parseInt(countField.min)
+                if (value >= max) {
+                    countField.value = max;
+                    incBtn.setAttribute('disabled', 'true')
+                }
+                else if (value <= min) {
+                    countField.value = min;
+                    decBtn.setAttribute('disabled', 'true')
+                }
 
+                if (value > min) {
+                    decBtn.removeAttribute('disabled')
+                }
+                if (value < max) {
+                    incBtn.removeAttribute('disabled')
+                }
+            }
+        }
+        this.contentBox.addEventListener('change', handler)
+        this.contentBox.addEventListener('click', handler)
+    }
 
-            if (isIncrease) {
-                countField.textContent = increase(incBtn, decBtn, value)
-            } else if (isDecrease) {
-                countField.textContent = decrease(incBtn, decBtn, value)
+    listenChangeButtonsClick() {
+        function handler(event) {
+            let isChangeButton = event.target.classList.contains('dropdown__item-button')
+            if (isChangeButton) {
+                let isIncrease = (event.target.dataset.operation === 'increase')
+                let isDecrease = (event.target.dataset.operation === 'decrease')
+                let parent = event.target.closest('.dropdown__button-box')
+                let countField = parent.querySelector('.dropdown__item-count')
+
+                if (isIncrease) {
+                    countField.value++
+                } else if (isDecrease) {
+                    countField.value--
+                }
             }
 
         }
@@ -170,7 +168,7 @@ class Dropdown {
         for (let i = 0; i < items.length; i++) {
             let currentItem= items[i];
             currentItem.querySelector('.dropdown__item-button--decrease').setAttribute('disabled', 'true');
-            currentItem.querySelector('.dropdown__item-count').textContent = 0;
+            currentItem.querySelector('.dropdown__item-count').value = 0;
         }
         this.contentBox.classList.remove('js--dropdown__content-box');
     }
@@ -181,7 +179,7 @@ class Dropdown {
         const amounts = []
         for (let i = 0; i < items.length; i++) {
             let amountElem = items[i].querySelector('.dropdown__item-count');
-            amounts[i] = parseInt(amountElem.textContent)
+            amounts[i] = parseInt(amountElem.value)
         }
         const result = []
 
@@ -197,7 +195,7 @@ class Dropdown {
             let row
             if (amount > 0) {
                 // 11-20, 111-120 итд
-                if (amount % 100 > 10 && amount % 100 < 21) {
+                if (amount % 100 >= 10 && amount % 100 < 21) {
                     row = amount + ' ' + dict[2];
                 } else if (amount % 10 === 1) {
                     row = '1' + ' ' + dict[0];

@@ -1,6 +1,7 @@
 extends ../base/base
 
 block variables
+    include ../catalog/catalog-data
     include ./UI-data
     include ../../components/input/input
     include ../../components/dropdown/dropdown
@@ -10,6 +11,7 @@ block variables
     include ../../components/toggler/toggler
     include ../../components/range-slider/range-slider
     include ../../components/button/button
+    include ../../components/room-card/room-card
     include ../../components/pagination/pagination
     include ../../components/modal/modal
 
@@ -52,6 +54,16 @@ block main
                     +modal({type: 'sign-in'})
             .ui__cards-column--3
                 .ui__cards-calendar
-
+                    +calendar({
+                        dataMode: "one-field-range",
+                        items: [{labelText: "Симпл-Димпл", type: "start"}]
+                    })
+                .ui__cards-room
+                    ul.ui__cards-room-list
+                        - var i = 0
+                        while (i < 2)
+                            - var info = locals.roomCardsInfo[i++]
+                            li.ui__cards-room-item
+                                +room-card(info)
 
 

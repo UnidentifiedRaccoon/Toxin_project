@@ -56,6 +56,19 @@
         opacity: 0.5;
       }
     }
+
+    &-count {
+      width: 1.5rem;
+      height: 1.5rem;
+      text-align: center;
+      border: none;
+      border-radius: 15px;
+      outline: none;
+
+      &:focus {
+        border: 2px solid $dark-shade_0-25;
+      }
+    }
   }
 
   &__button-box {

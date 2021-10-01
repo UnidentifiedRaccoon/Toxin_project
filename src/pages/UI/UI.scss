@@ -105,4 +105,16 @@
       &--3 { grid-area: col-3; }
     }
   }
+
+  &__cards-room-list {
+    margin: 0;
+    margin-top: 400px;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__cards-room-item {
+    margin-bottom: 20px;
+  }
+
 }

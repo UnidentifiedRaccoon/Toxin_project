@@ -1,17 +1,10 @@
 @import '../../theme/variables.scss';
 .button {
+  @include borderless-button-style;
   display: inline;
   position: relative;
-  border: none;
   border-radius: 22px;
-  padding: 5px 0;
-  cursor: pointer;
 
-  color: $purple;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: uppercase;
-  background: transparent;
 
   &--with-arrow {
     position: relative;
@@ -19,6 +12,7 @@
     // Добавление иконки стрелки
     &::before {
       @include arrow;
+      bottom: -3px;
       background: url('./img/icon-arrow_forward.svg') 50% 50% no-repeat
 
     }
@@ -31,7 +25,7 @@
   }
 
   &--filled {
-    padding: 7px 20px 9px;
+    padding: 9px 20px 10px;
     color: white;
     background: $gradient-purple;
   }
@@ -39,15 +33,21 @@
   // Hollow
   &__box {
     display: inline-block;
-    //padding: 8px 1px;
     position: relative;
     border-radius: 20px;
     background-clip: padding-box;
     z-index: 1;
-
     transition: 0.4s;
 
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.5;
+    }
 
+    &--full {
+      text-align: center;
+      width: 100%;
+    }
   }
 
   &__gradient {
@@ -62,4 +62,11 @@
     background: white;
     border: solid 0 transparent;
   }
+
+
+  &:hover,
+  &:focus {
+    @include hover-focus-style;
+  }
+
 }

@@ -13,9 +13,8 @@
   &__box {
     @include radio-box();
     width: 36px;
+    margin-right: 17px;
     border-radius: 10px;
-    opacity: 0.5;
-
     & .toggler__hole {
       @include radio-hole();
 
@@ -40,9 +39,13 @@
     }
   }
 
-  // disabled
   &__input:disabled + .toggler__box {
     opacity: 0.5;
+  }
+
+  &__input:hover + .toggler__box .toggler__gradient,
+  &__input:focus + .toggler__box .toggler__gradient {
+    @include hover-focus-style;
   }
 
 }

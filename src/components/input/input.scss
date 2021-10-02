@@ -5,15 +5,13 @@
   width: 100%;
 
   &--half{
-    width: 45%;
+    width: 46.5%;
   }
 
   &__label {
+    @include h3-style;
     display: inline-block;
     margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: bold;
-    text-transform: uppercase;
   }
 
   .input__field-wrapper {
@@ -28,9 +26,7 @@
   }
 
   // Добавление иконки стрелки --dropdown-style
-  &__decoration-arrow {
-    @include css-arrow;
-  }
+  &__decoration-arrow { @include css-arrow; }
 
   &__field {
     box-sizing: border-box;
@@ -40,9 +36,11 @@
     border: 1px solid $dark-shade_0-25;
     border-radius: 2px;
 
-    &:focus + span {
-      transition: 0.4s;
-      transform: rotate(-135deg);
+    &:focus + span {  @include css-arrow-transform; }
+
+    &:hover,
+    &:focus {
+      @include hover-focus-style;
     }
   }
 }

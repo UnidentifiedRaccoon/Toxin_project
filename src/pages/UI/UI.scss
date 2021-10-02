@@ -5,6 +5,9 @@
   width: 1240px;
   margin: 0 auto;
 
+  /////////////////////////
+  //// colors-and-type ////
+  /////////////////////////
   &__colors-and-type {
     display: flex;
     flex-direction: row;
@@ -51,6 +54,9 @@
       text-align: center;
       padding-left: 40px;
     }
+    & p {
+      @include text-style;
+    }
     & > *:nth-child(1)::after {
       position: absolute;
       top: 0;
@@ -82,6 +88,93 @@
       font-size: 14px;
       content: "Body";
       color: $dark-shade_0-25;
+    }
+  }
+
+  ///////////////////////
+  //// form-elements ////
+  ///////////////////////
+
+  &__form-elements {
+    display: grid;
+    grid-template-columns: 320px 320px 320px;
+    grid-template-areas:  "col-1 col-2 col-3";
+    grid-gap: 40px;
+    width: 100%;
+
+    & h3 {
+      margin-bottom: 10px;
+    }
+
+    & > * > * {
+      margin-bottom: 30px;
+    }
+
+    &-wrapper {
+      margin-bottom: 30px;
+    }
+
+    &-column {
+      &--1 { grid-area: col-1; }
+      &--2 { grid-area: col-2; }
+      &--3 { grid-area: col-3; }
+      &--narrow {
+        max-width: 265px;
+        & > * {
+          margin-bottom: 30px;
+        }
+      }
+    }
+
+    &--buttons-subblock {
+      margin-bottom: 20px;
+      button {
+        padding: 15px 20px;
+      }
+
+      & .button__box {
+        border-radius: 25px;
+        margin-right: 45px;
+
+        & .button__gradient {
+          top: -2px;
+          margin: -2px -3px;
+        }
+        & .button--hollow {
+          padding: 12px 20px 13px;
+        }
+      }
+
+      & .borderless-button {
+        @include borderless-button-style;
+        padding: 15px 20px;
+        margin-right: 45px;
+        &:disabled {
+          opacity: 0.5
+        }
+
+        &:hover,
+        &:focus {
+          @include hover-focus-style
+        }
+      }
+    }
+    &--like {
+      display: flex;
+      flex-direction: column;
+      & > * {
+        margin-right: auto;
+        margin-bottom: 5px;
+      }
+    }
+
+    &--bottom {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      grid-column-start: 1;
+      grid-column-end: 3;
     }
   }
 

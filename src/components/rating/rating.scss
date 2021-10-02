@@ -1,0 +1,74 @@
+@import "../../theme/variables";
+
+.rating {
+  --star-size: 24px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: calc(var(--star-size)*5);
+  height: var(--star-size);
+  border: none;
+
+  &__legend {
+    font-size: 0;
+    line-height: 0;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+    width: 100%;
+    height: var(--star-size);
+    padding-bottom: 2px;
+
+    &:focus-within {
+      box-shadow: 0 0 0 2px $dark-shade_0-25 ;
+    }
+  }
+
+  &__input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    &:checked ~ .rating__label::before, {
+      background-image: url(../../assets/img/icons/star.png);
+    }
+
+    &:hover ~ .rating__label::before {
+      filter: hue-rotate(35deg);
+    }
+  }
+
+  &__label {
+    display: inline-block;
+    position: relative;
+    width: calc(var(--star-size)*0.5);
+    height: var(--star-size);
+    cursor: pointer;
+
+    &::before {
+      position: absolute;
+      content: "";
+      left: 0;
+      top: 0;
+      width: calc(var(--star-size)*0.5);
+      height: var(--star-size);
+      background-image: url(../../assets/img/icons/star_border.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    &--right-half::before {
+      background-position: 100% 0;
+    }
+
+    &--left-half:before {
+      background-position: 0 0;
+    }
+  }
+
+
+}

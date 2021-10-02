@@ -8,11 +8,11 @@
 
 
   &__text-lead {
+    @include text-style;
     position: absolute;
     bottom: 15px;
     right: 10%;
     max-width: 300px;
-    line-height: 1.5rem;
     text-align: right;
   }
 

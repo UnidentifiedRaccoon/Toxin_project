@@ -1,3 +1,5 @@
+include ../../components/rating/rating
+
 //-
     options.number - номер комнаты
     options.cost - стоимость посуточного съема
@@ -25,8 +27,8 @@ mixin room-card(options)
                             img.room-card__slide.room-card__slide--hidden(src=item height="150px")
                         - imageCount++
                 .room-card__slider-buttons
-                    button.room-card__button.room-card__button--prev
-                    button.room-card__button.room-card__button--next
+                    button.room-card__button.room-card__button--prev(type='button')
+                    button.room-card__button.room-card__button--next(type='button')
                 ul.room-card__slider-points
                     - var i = 0
                     - var isFirst = true;
@@ -50,14 +52,10 @@ mixin room-card(options)
                     span в сутки
 
                 .room-card__testimonial-wrapper
-                    ul.room-card__stars
-                        - var i = 1
-                        while (i <= parseInt(options.rating))
-                            li.room-card__star.room-card__star--filled
-                            - i++
-                        while (i <= 5)
-                            li.room-card__star.room-card__star--hollow
-                            - i++
+                    +rating({
+                        name: options.number,
+                        value: options.rating
+                    })
                     span.room-card__testimonial-text
                         span.room-card__testimonial-count= options.reviews
                         span Отзывов

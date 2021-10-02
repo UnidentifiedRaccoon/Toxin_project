@@ -47,18 +47,26 @@
     &-button {
       width: 2rem;
       height: 2rem;
-      background-color: white;
+      font-size: 16px;
+      line-height: 16px;
       color: $dark-shade_0-50;
+      background-color: white;
       border: 1px solid $dark-shade_0-25;
       border-radius: 50%;
 
       &:disabled {
         opacity: 0.5;
       }
+
+      &:hover,
+      &:focus {
+        @include hover-focus-style;
+      }
     }
 
     &-count {
-      width: 1.5rem;
+      font-size: 16px;
+      width: 2.5rem;
       height: 1.5rem;
       text-align: center;
       border: none;

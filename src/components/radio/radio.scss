@@ -36,4 +36,8 @@
     opacity: 0.5;
   }
 
+  &__input:hover + .radio__box .radio__gradient,
+  &__input:focus + .radio__box .radio__gradient {
+    @include hover-focus-style;
+  }
 }

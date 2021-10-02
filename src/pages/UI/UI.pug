@@ -2,6 +2,8 @@ extends ../base/base
 
 block variables
     include ../catalog/catalog-data
+    include ../room-page-template/room-page-template-data
+    include ../../components/filter/filter-data
     include ./UI-data
     include ../../components/input/input
     include ../../components/dropdown/dropdown
@@ -9,11 +11,17 @@ block variables
     include ../../components/checkbox/checkbox
     include ../../components/radio/radio
     include ../../components/toggler/toggler
+    include ../../components/like-button/like-button
+    include ../../components/rating/rating
+    include ../../components/expandable-list/expandable-list
     include ../../components/range-slider/range-slider
     include ../../components/button/button
-    include ../../components/room-card/room-card
     include ../../components/pagination/pagination
+    include ../../components/benefits/benefits
+    include ../../components/bullet-list/bullet-list
+    include ../../components/testimonial/testimonial
     include ../../components/modal/modal
+    include ../../components/room-card/room-card
 
 block main
     .ui
@@ -38,6 +46,183 @@ block main
                     This is the body text which is used for most
                     of the design, like paragraphs, lists, etc.
         .ui__form-elements
+            .ui__form-elements-column--1
+                +input({
+                    labelText: "Text field",
+                    type: 'email',
+                    placeholder: 'Email',
+                })
+                // masked input ?
+                +dropdown({
+                    labelText: "dropdown",
+                    mode: 'persons',
+                })
+                +calendar({
+                    dataMode: "two-fields-range",
+                    items: [
+                        {labelText: "Date dropdown", type: "start"},
+                        {labelText: "Date dropdown", type: "end"}]
+                })
+                .ui__form-elements-column--narrow
+                    +calendar({
+                        dataMode: "one-field-range",
+                        items: [{labelText: "Filter date dropdown", type: "start"}]
+                    })
+                    +input({
+                        labelText: "Subscription text field",
+                        type: 'email',
+                        placeholder: 'Email',
+                        mode: 'subscribe-style',
+                    })
+                    +dropdown({
+                        labelText: "dropdown",
+                        mode: 'facilities',
+                    })
+            .ui__form-elements-column--2
+                .ui__form-elements-column--narrow
+                    .ui__form-elements-wrapper
+                        h3 checkbox buttons
+                        each item in locals.filter.rules
+                            +checkbox(item)
+                    .ui__form-elements-wrapper
+                        h3 Rich checkbox buttons
+                        each item in locals.filter.accessibility
+                            +checkbox(item)
+                    .ui__form-elements-wrapper
+                        h3 radio buttons
+                        +radio({
+                            name: "gender",
+                            items: [{
+                                text: 'Мужчина',
+                                value: 'man'
+                            }, {
+                                text: 'Женщина',
+                                value: 'woman',
+                                checked: true,
+                            }, {
+                                text: 'Undefined',
+                                value: 'undefined',
+                                disabled: true,
+                            }, {
+                                text: 'Undefined',
+                                value: 'undefined',
+                                disabled: true,
+                                checked: true,
+                            }]
+                        }
+                        )
+                    .ui__form-elements-wrapper
+                        h3 toggle
+                        +toggler({
+                            text: "Получать спецпредложения",
+                            value: "Get-subscribe",
+                            checked: true,
+                        })
+                        +toggler({
+                            text: "Получать спецпредложения",
+                            value: "Get-subscribe",
+                            disabled: true,
+                        })
+                        +toggler({
+                            text: "Получать спецпредложения",
+                            value: "Get-subscribe",
+                            checked: true,
+                            disabled: true,
+                        })
+                    .ui__form-elements-wrapper.ui__form-elements--like
+                        h3 like buttons
+                        +like-button({value: "12"})
+                        +like-button({value: "4", disabled: true})
+                    .ui__form-elements-wrapper
+                        h3 rate buttons
+                        +rating({value: 4})
+                    +expandable-list({
+                            items: locals.filter.additional,
+                            title: 'Expandable checkbox list'
+                        })
+            .ui__form-elements-column--3
+                .ui__form-elements-column--narrow
+                    .ui__form-elements-wrapper
+                        +range-slider({
+                            title: 'Range slider',
+                        })
+                .ui__form-elements-wrapper.ui__form-elements--buttons-block
+                    h3 radio buttons
+                    .ui__form-elements--buttons-subblock
+                        +button({
+                            text: 'Click me',
+                            fillingStyle: 'filled',
+                            widthStyle: 'fit',
+                            type: 'button'
+                        })
+                        +button({
+                            text: 'Click me',
+                            fillingStyle: 'filled',
+                            widthStyle: 'fit',
+                            type: 'button',
+                            disabled: true
+                        })
+                    .ui__form-elements--buttons-subblock
+                        +button({
+                            text: 'Click me',
+                            fillingStyle: 'hollow',
+                            widthStyle: 'fit',
+                            type: 'button'
+                        })
+                        +button({
+                            text: 'Click me',
+                            fillingStyle: 'hollow',
+                            widthStyle: 'fit',
+                            type: 'button',
+                            disabled: true
+                        })
+                    .ui__form-elements--buttons-subblock
+                        +button({
+                            text: 'Click me',
+                            type: 'button',
+                        })
+                        +button({
+                            text: 'Click me',
+                            type: 'button',
+                            disabled: true
+                        })
+                    .ui__form-elements--buttons-subblock
+                        +button({
+                            text: 'Перейти к оплате',
+                            fillingStyle: 'filled',
+                            widthStyle: 'full',
+                            type: 'button',
+                            withArrow: true
+                        })
+                .ui__form-elements-wrapper
+                    h3 Pagination
+                    +pagination({
+                        count: 15,
+                        current: 1,
+                    })
+                    +pagination({
+                        count: 15,
+                        current: 15,
+                    })
+                    +pagination({
+                        count: 15,
+                        current: 8,
+                    })
+
+
+
+            .ui__form-elements--bottom
+                .ui__form-elements-wrapper
+                    h3 benefits
+                    +benefits({items: locals.roomPageDatabase['888'].benefits})
+                .ui__form-elements-wrapper
+                    h3 Bullet list
+                    +bullet-list({items: locals.roomPageDatabase['888'].rules})
+                +testimonial(locals.roomPageDatabase['888'].testimonials.items[0])
+
+
+
+
         .ui__cards
             .ui__cards-column--1
                 .ui__find-apartaments

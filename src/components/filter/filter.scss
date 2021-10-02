@@ -1,17 +1,20 @@
+@import "../../theme/variables";
+
 .filter {
 
   &__legend {
+    @include h3-style;
     margin-bottom: 18px;
     padding-top: 20px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    text-transform: uppercase;
   }
   &__fieldset {
     margin: 0;
     padding: 0;
-    margin-bottom: 5px;
     border: none;
+
+    &--accessibility {
+      margin-bottom: 10px;
+    }
   }
 
   &__calendar {
@@ -32,7 +35,7 @@
   &__dropdown {
 
     &--persons {
-      margin-bottom: 30px;
+      margin-bottom: 33px;
     }
 
     & .input__label {
@@ -41,7 +44,7 @@
 
     &--facilities {
       padding-top: 5px;
-      margin-bottom: 10px;
+      margin-bottom: 30px;
     }
   }
 }

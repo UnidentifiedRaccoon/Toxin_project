@@ -12,22 +12,19 @@
   border-radius: 2px;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
 
-  & label { color: $dark-shade_1; }
-
   &__heading {
-    margin-bottom: 1.5rem;
-    font-size: 1.75rem;
-    font-weight: bold;
+    @include h1-style;
+    margin-bottom: 23px;
   }
 
   &__calendar-box {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1.5rem;
+    margin-bottom: 18px;
   }
 
   &__dropdown {
-    margin-bottom: 30px;
+    margin-bottom: 32px;
 
     & + .modal__price-estimation {
       margin-top: -10px;
@@ -35,8 +32,7 @@
   }
 
   &__radio {
-    padding-top: 3px;
-    margin-bottom: 15px;
+    margin-bottom: 17px;
 
     & .radio__list {
       display: flex;
@@ -46,7 +42,7 @@
     }
 
     & .radio__item {
-      margin-right: 1rem;
+      margin-right: 8%;
 
       &:last-child {
         margin-right: 0;
@@ -68,19 +64,23 @@
     border-radius: 50%;
     cursor: pointer;
     transform: rotate(180deg);
+
+    &:hover,
+    &:focus {
+      @include hover-focus-style;
+    }
   }
 
   &__button button {
-    padding: 16px 20px 17px;
+    padding: 15px 20px;
   }
 
   .modal__entry-data-title {
+    @include h3-style;
     display: inline-block;
     margin: 0;
     margin-bottom: 5px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    text-transform: uppercase;
+
   }
 
   &__bottom-link-wrapper {

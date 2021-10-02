@@ -1,6 +1,8 @@
 include ../../components/testimonial/testimonial
 include ../../components/piechart/piechart
 include ../../components/modal/modal
+include ../../components/bullet-list/bullet-list
+include ../../components/benefits/benefits
 
 mixin room-page(options)
     .room-page
@@ -17,11 +19,7 @@ mixin room-page(options)
                 h2.visually-hidden Общая информация о номере
                 .room-page__benefits-wrapper
                     h3.room-page__title Сведения о номере
-                    ul.room-page__benefits-list
-                        each item in options.benefits
-                            li.room-page__benefits-item(class=`room-page__benefits-item--${item[2]}`)
-                                h4.room-page__subtitle= item[0]
-                                span.room-page__text= item[1]
+                    +benefits({items: options.benefits})
                 .room-page__rating
                     h3.room-page__title Впечатления от номера
                     +piechart()
@@ -33,11 +31,10 @@ mixin room-page(options)
                         each item in options.testimonials.items
                             li.room-page__text.room-page__testimonials-item
                                 +testimonial(item)
-                .room-page__rules
+                .room-page__bullet
                     h3.room-page__title Правила
-                    ul.room-page__rules-list
-                        each item in options.rules
-                            li.room-page__rules-item= item
+                    +bullet-list({items: options.rules})
+
                 .room-page__cancel
                     h3.room-page__title Отмена
                     p.room-page__text.

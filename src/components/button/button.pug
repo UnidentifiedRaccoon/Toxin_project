@@ -1,10 +1,11 @@
 //-
     options.href - адрес ссылки для тега: <a> - оформленного как кнопка (присутствует только у <ссылок>)
     options.text - текст - содержимое кнопки
-    options.fillingStyle - тип заполнения кнопки (filled/hollow)
+    options.fillingStyle - тип заполнения кнопки (filled/hollow/none)
     options.widthStyle- тип ширины (full - зависит от ширины родителя/ fit - зависит от ширины внутреннего текста)
     options.type - submit/button
     options.withArrow - true/false - добавляет псевдоэлемент с иконкой стрелки
+    options.disabled - true/false
 
 mixin button(options)
     if !options
@@ -15,19 +16,20 @@ mixin button(options)
         if (options.fillingStyle) classes.push('button--' + options.fillingStyle)
         if (options.widthStyle) classes.push('button--' + options.widthStyle)
         if (options.withArrow) classes.push('button--with-arrow')
+        if (options.disabled) classes.push('disabled')
+        var classes_for_box = []
+        if (options.disabled) classes_for_box.push('disabled')
+        if (options.widthStyle) classes_for_box.push('button--' + options.widthStyle)
+
 
     if options.href
-        if options.fillingStyle === "hollow"
-            .button__box
+        .button__box(class=classes_for_box)
+            if options.fillingStyle === "hollow"
                 .button__gradient
-                a.button(class=classes href=options.href)= options.text
-        else
-            a.button(class=classes href=options.href)= options.text
+            a.button(class=classes href=options.href)&attributes(attributes)= options.text
 
     else
-        if options.fillingStyle === "hollow"
-            .button__box
+        .button__box(class=classes_for_box)
+            if options.fillingStyle === "hollow"
                 .button__gradient
-                button.button(class=classes type=options.type)&attributes(attributes)= options.text
-        else
-            button.button(class=classes type=options.type)&attributes(attributes)= options.text
+            button.button(class=classes type=options.type disabled=options.disabled)&attributes(attributes)= options.text

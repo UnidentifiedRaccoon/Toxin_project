@@ -9,7 +9,7 @@ $dropdown-width: 15rem;
     color: $dark-shade_1;
 
     &::after {
-      transform: rotate(-135deg);
+      @include css-arrow-transform;
     }
   }
 

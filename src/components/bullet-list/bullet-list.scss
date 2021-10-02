@@ -1,0 +1,27 @@
+@import '../../theme/variables';
+
+.bullet {
+  &__list {
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+    list-style: none;
+  }
+
+  &__item {
+    position: relative;
+    line-height: 1.5rem;
+    margin-bottom: 15px;
+
+    &::before {
+      position: absolute;
+      content: "";
+      top: 5px;
+      left: -20px;
+      width: 10px;
+      height: 10px;
+      background-color: $dark-shade_0-25;
+      border-radius: 50%;
+    }
+  }
+}

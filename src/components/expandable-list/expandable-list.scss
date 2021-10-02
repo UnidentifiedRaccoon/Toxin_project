@@ -1,0 +1,43 @@
+@import '../../theme/variables';
+
+
+.expandable {
+
+  &__button {
+    @include h3-style;
+    position: relative;
+    margin-bottom: 15px;
+    padding: 5px 15px 5px 0;
+    width: 100%;
+    text-align: start;
+    border: none;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+      @include hover-focus-style;
+    }
+
+    &::after {
+      @include css-arrow;
+      top: 7px;
+    }
+
+    &.active {
+      &::after {
+        @include css-arrow-transform;
+      }
+    }
+  }
+
+  &__list {
+    display: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &.active {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+
+mixin expandable-list(options)
+    .expandable
+        button.expandable__button(type='button')= options.title
+        ul.expandable__list
+            each item in options.items
+                li.expandable__item
+                    +checkbox(item)

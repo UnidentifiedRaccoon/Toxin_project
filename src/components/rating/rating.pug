@@ -1,0 +1,24 @@
+
+mixin rating(options)
+    fieldset.rating
+        legend.rating__legend Рейтинг
+        .rating__group
+            - var i = 5
+            - var toggle = 0;
+            - var classes
+            while (i > 0)
+                -
+                    var checked = false
+                    if (toggle === 0) {
+                        classes = 'rating__label--right-half'
+                        toggle++
+                    } else if (toggle === 1) {
+                        classes = 'rating__label--left-half'
+                        toggle--
+                    }
+                    if (parseInt(options.value) === i) {
+                        checked = true
+                    }
+                input.rating__input(id=`rating-${options.name}-${i}` type="radio" name=`rating-${options.name}` value=i checked=checked)
+                label.rating__label(class=classes for=`rating-${options.name}-${i}`)
+                - i -= 0.5

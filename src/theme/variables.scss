@@ -21,6 +21,7 @@ $site-padding: 0 10rem;
 
 $border-width: 2px;
 $gradient-purple: linear-gradient($purple, $dark-purple);
+$reverce-gradient-purple: linear-gradient($dark-purple, $purple);
 $gradient-transparency: linear-gradient(rgba(188, 156, 255, 0.25), rgba(139, 164, 249, 0.25));
 $gradient-green: linear-gradient($green, $blue);
 $gradient-gold: linear-gradient(#FFE39C, #FFBA9C);
@@ -37,22 +38,32 @@ $modal-width-slim: 320px;
 @mixin h2-style {
   font-size: 19px;
   font-weight: bold;
-
   color: $dark-shade_1;
 }
 
 @mixin h3-style {
   font-size: 12px;
+  font-weight: bold;
   color: $dark-shade_1;
+  text-transform: uppercase;
 }
 
 @mixin text-style {
   font-size: 14px;
+  line-height: 24px;
   color: $dark-shade_0-75;
 }
 
-
-
+@mixin borderless-button-style {
+  font-size: 12px;
+  font-weight: bold;
+  color: $purple;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 5px 0;
+}
 
 
 @mixin arrow {

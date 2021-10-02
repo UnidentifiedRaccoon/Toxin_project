@@ -1,5 +1,4 @@
 import './room-card.scss'
-import * as events from "events";
 
 // Навешивание слушателей на каждую карточку - плохая практика
 // Следую принципу делегирования, мы должны использовать listener
@@ -56,25 +55,43 @@ class roomCard {
     }
 }
 
-if (list) {
-    let cards = list.querySelectorAll('.room-card')
+function getCardInstances(cards) {
     let cardsInstances = []
-    for (let i = 0; i < cards.length-1; i++) {
+    for (let i = 0; i < cards.length; i++) {
         cardsInstances.push(new roomCard(cards[i], i))
     }
-
-    list.addEventListener('click', function(event) {
-        if (event.target.tagName === 'BUTTON') {
-            event.preventDefault();
-            let card = cardsInstances[parseInt(event.target.dataset.sliderNumber)]
-            if (event.target.dataset.type === 'prev') {
-                card.prev()
-            } else if (event.target.dataset.type === 'next') {
-                card.next()
-            } else {
-                console('Ошибка при перелистывании слайдера')
-            }
-
-        }
-    })
+    return cardsInstances
 }
+
+function sliderClickHandler(cardsInstances, event) {
+    console.log(arguments)
+    if (event.target.tagName === 'BUTTON') {
+        event.preventDefault();
+        let card = cardsInstances[parseInt(event.target.dataset.sliderNumber)]
+        if (event.target.dataset.type === 'prev') {
+            card.prev()
+        } else if (event.target.dataset.type === 'next') {
+            card.next()
+        } else {
+            console.log('Ошибка при перелистывании слайдера')
+        }
+    }
+}
+
+
+if (list) {
+    let cards = list.querySelectorAll('.room-card')
+    let cardsInstances = getCardInstances(cards)
+    list.addEventListener('click',  sliderClickHandler.bind(null, cardsInstances))
+} else {
+    let cards = document.querySelectorAll('.room-card')
+    console.log(cards)
+    let cardsInstances = getCardInstances(cards)
+    console.log(cardsInstances)
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].addEventListener('click',  sliderClickHandler.bind(null, cardsInstances))
+    }
+}
+
+
+

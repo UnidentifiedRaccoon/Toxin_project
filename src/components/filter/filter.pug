@@ -4,6 +4,7 @@ include ../calendar/calendar
 include ../dropdown/dropdown
 include ../checkbox/checkbox
 include ../range-slider/range-slider
+include ../expandable-list/expandable-list
 
 mixin filter()
     form.filter
@@ -18,7 +19,7 @@ mixin filter()
         .filter__range
             +range-slider({
                 title: 'Диапазон цен',
-                text: 'Стоимость за сутки пребывания в номере',
+                text: 'Стоимость за сутки пребывания в номере'
             })
         fieldset.filter__fieldset.filter__fieldset--rules
             legend.filter__legend  Правила дома
@@ -34,6 +35,7 @@ mixin filter()
                 mode: 'facilities',
             })
         fieldset.filter__fieldset.filter__fieldset--additional
-            legend.filter__legend  Дополнительные удобства
-            each item in locals.filter.additional
-                +checkbox(item)
+            +expandable-list({
+                items: locals.filter.additional,
+                title: 'Дополнительные удобства'
+            })

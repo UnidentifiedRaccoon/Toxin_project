@@ -15,7 +15,7 @@ mixin modal(options)
 
     if options.type === "find-apartments"
         .modal
-            b.modal__heading Найдем номера под ваши пожелания
+            b.modal__heading Найдём номера под ваши пожелания
             form(
                 class="modal__form"
                 id="find-form"
@@ -83,11 +83,11 @@ mixin modal(options)
                         span Сам считай
                     div
                         span Сбор за услуги: скидка 2 179₽
-                        span.modal__tooltip(title="Я подсказка")= '!'
+                        span.modal__tooltip(title="Я подсказка" tabindex="0")= '!'
                         span 0₽
                     div
                         span Сбор за дополнительные услуги
-                        span.modal__tooltip(title="Я другая подсказка")= '!'
+                        span.modal__tooltip(title="Я другая подсказка" tabindex="0")= '!'
                         span 300₽
                     div
                         span Итого
@@ -160,7 +160,7 @@ mixin modal(options)
                         })
                 .modal__button
                     +button({
-                        text: 'Войти',
+                        text: 'Зарегистрироваться',
                         fillingStyle: 'filled',
                         widthStyle: 'full',
                         withArrow: true
@@ -211,8 +211,7 @@ mixin modal(options)
                         href: './sign-up.html',
                         text: 'Создать',
                         fillingStyle: 'hollow',
-                        widthStyle: 'fit',
-                        withArrow: true
+                        widthStyle: 'fit'
                     })
 
 

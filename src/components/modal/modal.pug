@@ -15,7 +15,7 @@ mixin modal(options)
 
     if options.type === "find-apartments"
         .modal
-            b.modal__heading Найдем номера под ваши пожелания
+            b.modal__heading Найдём номера под ваши пожелания
             form(
                 class="modal__form"
                 id="find-form"
@@ -160,7 +160,7 @@ mixin modal(options)
                         })
                 .modal__button
                     +button({
-                        text: 'Войти',
+                        text: 'Зарегистрироваться',
                         fillingStyle: 'filled',
                         widthStyle: 'full',
                         withArrow: true
@@ -211,8 +211,7 @@ mixin modal(options)
                         href: './sign-up.html',
                         text: 'Создать',
                         fillingStyle: 'hollow',
-                        widthStyle: 'fit',
-                        withArrow: true
+                        widthStyle: 'fit'
                     })
 
 

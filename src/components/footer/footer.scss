@@ -33,15 +33,11 @@
         }
 
         &-title {
-            font-size: 0.85rem;
-            display: block;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
+            margin: 5px 0 15px;
         }
 
         &-text {
-            color: $dark-shade_0-75;
-            line-height: 1.5rem;
+            @include text-style;
         }
     }
 
@@ -68,8 +64,7 @@
     }
 
     &__copyright {
-        color: $dark-shade_0-75;
-        text-align: center;
+        @include text-style;
     }
 
     @include media-breakpoint-down(1000px) {

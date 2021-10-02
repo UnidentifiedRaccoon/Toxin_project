@@ -25,7 +25,7 @@ mixin footer(options)
                 В данном случае подобное решение объясняется простотой реализации и стилизации
             each column in options.items
                 .footer__column.footer__column--links
-                    strong.footer__column-title= column.title
+                    h3.footer__column-title= column.title
                     ul.footer__links-list
                         each item in column.items
                             li.footer__link-item
@@ -35,7 +35,7 @@ mixin footer(options)
                                 })
 
             .footer__column.footer__column--subscribe
-                strong.footer__column-title Подписка
+                h3.footer__column-title Подписка
                 p.footer__column-text.
                     Получайте специальные предложения и
                     новости сервиса

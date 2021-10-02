@@ -14,7 +14,6 @@
   margin: -1px;
 }
 
-
 html,
 body {
   font-family: "Montserrat", "Arial", sans-serif;
@@ -23,12 +22,12 @@ body {
   height: 100%;
 }
 
-h1,
-h2 {
-  text-align: center;
-  color: #777;
-  font-family: Arial, sans-serif;
-}
+
+
+h1 { @include h1-style; }
+h2 { @include h2-style; }
+h3 { @include h3-style; }
+
 
 a {
   color: $dark-purple;

@@ -12,3 +12,9 @@ mixin pagination(options)
                         a.pagination__link(href="/mock-address/change-me")= i
 
                 - i++
+        -
+            var from = (options.current - 1) * 12 + 1
+            var to = options.current * 12
+            var total = (options.count - 1) * 12
+            var totalStr = (total > 100) ? '100+' : `${total}+`
+        p.pagination__text= `${from} - ${to} из ${totalStr} вариантов аренды`

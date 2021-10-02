@@ -10,16 +10,23 @@
     margin-bottom: 5px;
     font-weight: bold;
     color: $dark-shade_0-75;
+
+    & + .checkbox__text {
+      font-size: 12px;
+      line-height: 14px;
+    }
   }
 
   &__text {
-    font-size: 0.9rem;
+    @include text-style;
+    line-height: 18px;
   }
 
   // Градиентная радио-кнопка
   &__box {
     @include radio-box();
     border-radius: 4px;
+    margin-right: 12px;
 
     & .checkbox__hole {
       @include radio-hole();

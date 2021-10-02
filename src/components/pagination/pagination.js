@@ -39,13 +39,16 @@ if (pagination) {
 
     list.append(...result)
     newPagination.prepend(list)
+    let p = pagination.querySelector('.pagination__text')
+    newPagination.append(p)
+
 
     pagination.replaceWith(newPagination)
     if (currentNumber > 0) {
-        newPagination.insertAdjacentHTML("afterbegin", buttonPrev)
+        list.insertAdjacentHTML("beforebegin", buttonPrev)
     }
     if (currentNumber < pages.length-1) {
-        newPagination.insertAdjacentHTML("beforeend", buttonNext)
+        list.insertAdjacentHTML("afterend", buttonNext)
     }
 
 }

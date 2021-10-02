@@ -5,15 +5,13 @@
   width: 100%;
 
   &--half{
-    width: 45%;
+    width: 46.5%;
   }
 
   &__label {
+    @include h3-style;
     display: inline-block;
     margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: bold;
-    text-transform: uppercase;
   }
 
   .input__field-wrapper {

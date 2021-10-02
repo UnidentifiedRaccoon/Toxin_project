@@ -1,0 +1,36 @@
+@import '../../theme/variables';
+
+
+.expandable {
+
+  &__button {
+    @include h3-style;
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: start;
+    border: none;
+    background-color: transparent;
+
+    &::after {
+      @include css-arrow;
+      top: 0;
+    }
+  }
+
+  &__list {
+    display: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  &__item{
+  }
+
+
+}

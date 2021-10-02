@@ -13,6 +13,7 @@
   &__box {
     @include radio-box();
     width: 36px;
+    margin-right: 17px;
     border-radius: 10px;
     opacity: 0.5;
 

@@ -1,3 +1,5 @@
+include ../../components/rating/rating
+
 //-
     options.number - номер комнаты
     options.cost - стоимость посуточного съема
@@ -50,14 +52,10 @@ mixin room-card(options)
                     span в сутки
 
                 .room-card__testimonial-wrapper
-                    ul.room-card__stars
-                        - var i = 1
-                        while (i <= parseInt(options.rating))
-                            li.room-card__star.room-card__star--filled
-                            - i++
-                        while (i <= 5)
-                            li.room-card__star.room-card__star--hollow
-                            - i++
+                    +rating({
+                        name: options.number,
+                        value: options.rating
+                    })
                     span.room-card__testimonial-text
                         span.room-card__testimonial-count= options.reviews
                         span Отзывов

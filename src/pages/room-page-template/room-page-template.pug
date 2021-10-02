@@ -1,6 +1,7 @@
 include ../../components/testimonial/testimonial
 include ../../components/piechart/piechart
 include ../../components/modal/modal
+include ../../components/bullet-list/bullet-list
 
 mixin room-page(options)
     .room-page
@@ -33,11 +34,10 @@ mixin room-page(options)
                         each item in options.testimonials.items
                             li.room-page__text.room-page__testimonials-item
                                 +testimonial(item)
-                .room-page__rules
+                .room-page__bullet
                     h3.room-page__title Правила
-                    ul.room-page__rules-list
-                        each item in options.rules
-                            li.room-page__rules-item= item
+                    +bullet-list({items: options.rules})
+
                 .room-page__cancel
                     h3.room-page__title Отмена
                     p.room-page__text.

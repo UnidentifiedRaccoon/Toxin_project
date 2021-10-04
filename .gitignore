@@ -4,13 +4,12 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 
-src/theme/fonts/
 design/
 
 .idea/
 .cache/
 coverage/
-dist/
+#dist/
 #!dist/index.html
 node_modules/
 *.log

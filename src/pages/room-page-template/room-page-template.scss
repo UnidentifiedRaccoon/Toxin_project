@@ -58,7 +58,12 @@
     margin: 0;
   }
 
-  &__rating {
+  &__benefits-wrapper {
+    margin-right: 80px;
+    margin-bottom: 10px;
+  }
+
+  &__rating-wrapper {
     margin-bottom: 25px;
 
     & h3 {
@@ -127,7 +132,7 @@
       }
     }
 
-    &__rules,
+    &__bullet,
     &__cancel {
       margin-bottom: 20px;
     }
@@ -149,7 +154,7 @@
       align-items: center;
     }
 
-    &__rules,
+    &__bullet,
     &__cancel {
       margin-right: 0;
       width: 85%;

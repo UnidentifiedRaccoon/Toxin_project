@@ -3,7 +3,9 @@ include ../../components/modal/modal
 
 block main
     .sign-up
-        // <div class="slider">
+        // <div class="slider"> - модуль слайдер находит блок
+            с классом .sign-up и встраивает в него слайдер
+            (анимации описаны в блоке текущей страницы)
         +modal({type: 'sign-up'})
 
 

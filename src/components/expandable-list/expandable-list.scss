@@ -15,7 +15,7 @@
 
     &:hover,
     &:focus {
-      @include hover-focus-style;
+      @include hover-focus-style--hard;
     }
 
     &::after {

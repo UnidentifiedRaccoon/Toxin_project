@@ -23,7 +23,9 @@
     }
   }
 
-  &:hover .room-card__slider-buttons {
+  &:hover .room-card__slider-buttons,
+  &:focus .room-card__slider-buttons,
+  &:focus-within .room-card__slider-buttons {
     display: flex;
   }
 
@@ -138,25 +140,6 @@
     }
     &-count {
       font-weight: bold;
-    }
-  }
-
-
-  &__stars {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  &__star {
-    width: 1.7rem;
-    height: 1.7rem;
-    &--filled {
-      background: url("./img/star-filled.svg") no-repeat;
-    }
-    &--hollow {
-      background: url("./img/star-hollow.svg") no-repeat;
     }
   }
 }

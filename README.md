@@ -10,6 +10,8 @@
 
 А также для освоения принципа модульности в разработке сайта
 
+[test my project](link)
+
 ## Building and running on localhost
 
 First install dependencies:

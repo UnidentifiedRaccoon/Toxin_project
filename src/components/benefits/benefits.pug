@@ -1,9 +1,13 @@
-
+// -
+    options.items - массив объектов "плюшек" номера
+    options.items[0].title - Заголовок/название
+    options.items[0].text - Текст "плюшки"
+    options.items[0].class - Название специального класса стилизации
 
 mixin benefits(options)
     .benefits
         ul.benefits__list
             each item in options.items
-                li.benefits__item(class=`benefits__item--${item[2]}`)
-                    h4.benefits__subtitle= item[0]
-                    span.benefits__text= item[1]
+                li.benefits__item(class=`benefits__item--${item.class}`)
+                    h4.benefits__subtitle= item.title
+                    span.benefits__text= item.text

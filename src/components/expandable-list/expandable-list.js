@@ -1,3 +1,4 @@
+import './expandable-list.scss'
 let lists = document.querySelectorAll('.expandable')
 
 for (let i = 0; i < lists.length; i++) {

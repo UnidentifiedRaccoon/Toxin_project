@@ -22,7 +22,7 @@
   // Добавление иконки стрелки
   &--subscribe-style .input__field-wrapper::after {
     @include arrow;
-    background: url("./img/icon-arrow.svg") 50% 60% no-repeat;
+    background: url("../../assets/img/icons/arrow_forward--purple.svg") 50% 60% no-repeat;
   }
 
   // Добавление иконки стрелки --dropdown-style

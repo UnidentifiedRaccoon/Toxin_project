@@ -6,8 +6,9 @@ block title
 
 block main
     .index
-        // <div class="slider">
-
+        // <div class="slider"> - модуль слайдер находит блок
+            с классом .index и встраивает в него слайдер
+            (анимации описаны в блоке текущей страницы)
         +modal({type: 'find-apartments'})
         p.index__text-lead.
             Лучшие номера для вашей работы, отдыха

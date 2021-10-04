@@ -19,9 +19,8 @@ $blue: #66d2ea;
 $site-padding: 0 10rem;
 
 
-$border-width: 2px;
 $gradient-purple: linear-gradient($purple, $dark-purple);
-$reverce-gradient-purple: linear-gradient($dark-purple, $purple);
+$reverse-gradient-purple: linear-gradient($dark-purple, $purple);
 $gradient-transparency: linear-gradient(rgba(188, 156, 255, 0.25), rgba(139, 164, 249, 0.25));
 $gradient-green: linear-gradient($green, $blue);
 $gradient-gold: linear-gradient(#FFE39C, #FFBA9C);
@@ -65,6 +64,15 @@ $modal-width-slim: 320px;
   padding: 5px 0;
 }
 
+@mixin hover-focus-style {
+  outline: none;
+  box-shadow: 0 0 2px 1px $dark-shade_0-50;
+}
+
+@mixin hover-focus-style--hard {
+  outline: none;
+  box-shadow: 0 0 6px 1px $dark-shade_1;
+}
 
 @mixin arrow {
   position: absolute;
@@ -79,8 +87,8 @@ $modal-width-slim: 320px;
 @mixin css-arrow {
   content: "";
   position: absolute;
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   right: 15px;
   top: 35%;
   pointer-events: none;
@@ -88,8 +96,13 @@ $modal-width-slim: 320px;
   border-bottom: 2px solid $dark-shade_0-50;
   border-right: 2px solid $dark-shade_0-50;
   transform: rotate(45deg);
+  transform-origin: bottom right;
   transition: 0.4s;
+}
 
+@mixin css-arrow-transform {
+  transition: 0.4s;
+  transform: rotate3d(1, -0.4, 0, 180deg) translate(6px, 6px);
 }
 
 

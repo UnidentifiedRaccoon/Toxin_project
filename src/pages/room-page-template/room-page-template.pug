@@ -4,7 +4,12 @@ include ../../components/modal/modal
 include ../../components/bullet-list/bullet-list
 include ../../components/benefits/benefits
 
-mixin room-page(options)
+// -
+    options - Объект с информацией о текущей комнате
+    - полное описание (пример) - смотреть в room-page-template-data.pug
+    или искать по коду locals.roomPageDatabase
+
+mixin room-page-template(options)
     .room-page
         h1.visually-hidden= `Апартаменты ${options.orderInfo.number}`
         .room-page__images-wrapper
@@ -20,7 +25,7 @@ mixin room-page(options)
                 .room-page__benefits-wrapper
                     h3.room-page__title Сведения о номере
                     +benefits({items: options.benefits})
-                .room-page__rating
+                .room-page__rating-wrapper
                     h3.room-page__title Впечатления от номера
                     +piechart()
                 .room-page__testimonials
@@ -33,7 +38,7 @@ mixin room-page(options)
                                 +testimonial(item)
                 .room-page__bullet
                     h3.room-page__title Правила
-                    +bullet-list({items: options.rules})
+                    +bullet-list({items: options.bullets})
 
                 .room-page__cancel
                     h3.room-page__title Отмена

@@ -43,8 +43,8 @@
     height: 40px;
   }
 
-  &__prev { background: 30% 50% url(../../assets/img/icons/calendar-arrow_back.svg) no-repeat; }
-  &__next { background: 30% 50% url(../../assets/img/icons/calendar-arrow_forward.svg) no-repeat; }
+  &__prev { background: 30% 50% url(../../assets/img/icons/arrow_back--purple.svg) no-repeat; }
+  &__next { background: 30% 50% url(../../assets/img/icons/arrow_forward--purple.svg) no-repeat; }
 
   & .datepicker--content {
     padding: 10px 18px;

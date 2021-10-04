@@ -17,6 +17,10 @@
     margin-bottom: 23px;
   }
 
+  &__input {
+    margin-bottom: 12px;
+  }
+
   &__calendar-box {
     display: flex;
     justify-content: space-between;
@@ -27,7 +31,7 @@
     margin-bottom: 32px;
 
     & + .modal__price-estimation {
-      margin-top: -10px;
+      margin-top: -7px;
     }
   }
 
@@ -67,13 +71,17 @@
 
     &:hover,
     &:focus {
-      @include hover-focus-style;
+      @include hover-focus-style--hard;
     }
   }
 
-  &__button button {
-    padding: 15px 20px;
+  &__button {
+    margin-top: 20px;
+    button {
+      padding: 15px 20px;
+    }
   }
+
 
   .modal__entry-data-title {
     @include h3-style;
@@ -126,7 +134,6 @@
   }
 
   &__price-estimation {
-    padding-bottom: 10px;
 
     & div {
       width: 100%;

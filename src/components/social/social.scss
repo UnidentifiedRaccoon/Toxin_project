@@ -1,3 +1,4 @@
+@import "../../theme/variables";
 .social {
 
   &__list {
@@ -17,10 +18,15 @@
 
   &__link {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 2rem;
     height: 2rem;
     font-size: 0;
+
+    &:hover,
+    &:focus {
+      @include hover-focus-style;
+    }
   }
 }

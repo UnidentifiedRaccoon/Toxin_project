@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const TerserWebpackPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
@@ -26,6 +27,32 @@ module.exports = {
           new TerserWebpackPlugin(),
         ]
     },
-    // target: 'browserslist',
+    target: `browserslist:${path.resolve(__dirname, '../.browserslistrc')}`,
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                use: 'babel-loader',
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader'
+                ]
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader'
+                ],
+            },
+        ]
+    },
 
 }

@@ -4,7 +4,6 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 
-design/
 
 .idea/
 .cache/

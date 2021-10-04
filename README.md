@@ -61,25 +61,33 @@ npm run serve
 │   ├── webpack.prod.config.js       # Конфиг билд сборки (дополнение базового)
 ├── designs/                         # Макеты страниц
 ├── src/                             # Исходники
-│   ├── assets/                      # Подключаемые ресурсы
-│   │   ├── fonts/                   # Шрифты используемые в проекте
-│   │   ├── img/                     # Изображения используемые в проекте
+│   ├── assets/                      
+│   │   ├── fonts/                   
+│   │   ├── img/                     
 │   ├── components/                  # Папка с блоками проекта
 │   ├── theme/                       # Папка глобальных стилей
 │   │   ├── fonts.scss               # Файл подглючения шрифтов
 │   │   ├── global.scss              # Файл для подглючения глобальных стилей
 │   │   ├── variables.scss           # Файл для подключения SCSS переменных  и миксинов
 │   ├── pages/                       # Папка страниц проекта
-├── .browserslistrc                  # Список поддерживаемых браузеров
-├── .eslintrc.json                   # Конфигурация проверки JavaScript в ESLint
-├── .gitignore                       # Список исключённых файлов и папок из Git
-├── .babel.config.json               # Конфигурация компиляции Javascript в es5
+├── .browserslistrc                  
+├── .eslintrc.json                  
+├── .gitignore                      
+├── .babel.config.json               
 ├── devMap.txt                       # Файл с описанием текуших задач проекта (развитие, фиксы итд)
-├── package.json                     # Список модулей и прочей информации
-├── postcss.config.js                # Конфигурация компиляции стилей
-├── README.md                        # Документация шаблона
+├── package.json                     
+├── package-lock.json                     
+├── postcss.config.js                
+├── README.md                       
 └── webpack.config.js                # Мердж конфиг для других конфигов webpack'а
 ```
+
+### Libs
+
+---
+- [jQuery](https://jquery.com/)
+- [air-datepicker](http://t1m0n.name/air-datepicker/docs/index-ru.html)
+- [noUiSlider](https://refreshless.com/nouislider/)
 
 
 ### Issues
